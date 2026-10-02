@@ -173,7 +173,7 @@ body{-webkit-font-smoothing:antialiased}
 .meta>span{display:block;margin-top:4px;font-size:13px;color:var(--mute)}
 .pp{all:unset;cursor:pointer;margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:9px 18px 9px 14px;border-radius:40px;background:var(--acc);color:#140f0a;font:700 13px var(--f);letter-spacing:.1em;text-transform:uppercase;transition:background .2s,transform .15s}
 .pp:hover{background:#e8bd83}.pp:active{transform:scale(.97)}
-.pp svg,.tb svg,.np svg{width:16px;height:16px;fill:currentColor;flex:none}
+.pp svg,.tb svg{width:16px;height:16px;fill:currentColor;flex:none}
 .trk{list-style:none;padding:0;margin:16px 0 0;counter-reset:t}
 .trk li{border-top:1px solid rgba(var(--ink-rgb),.14)}
 .trk li:last-child{border-bottom:1px solid rgba(var(--ink-rgb),.14)}
@@ -190,8 +190,6 @@ body{-webkit-font-smoothing:antialiased}
 .player:not(.soon) .note{display:none}
 .player.soon .pp{opacity:.5;cursor:default}
 .player.soon .tb{cursor:default}.player.soon .tb:hover{background:none}
-.np{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border-radius:40px;background:rgba(var(--ink-rgb),.1);border:1px solid rgba(217,168,106,.5);color:var(--acc);font:600 13px var(--s);max-width:40vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.np[hidden]{display:none}
 .gbtn{all:unset;box-sizing:border-box;cursor:pointer;margin-top:10px;display:flex;align-items:center;gap:14px;width:100%;max-width:360px;padding:12px 16px 12px 12px;border-radius:14px;background:rgba(var(--ink-rgb),.07);border:1px solid rgba(var(--ink-rgb),.2);transition:border-color .2s,background .2s}
 .gbtn:hover{border-color:var(--acc);background:rgba(217,168,106,.1)}
 .gbtn:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
@@ -246,7 +244,7 @@ body.gopen{overflow:hidden}
  .tl{font-size:13px;margin-top:10px}.tl li{grid-template-columns:52px 1fr;gap:10px;padding:5px 0}.tl b{font-size:14px}
  .tracks li{padding:6px 0}
  .gbtn{max-width:none}.gview{padding:4vh 0;gap:0}.gnav{width:36px;font-size:36px}.gview figure{max-width:calc(100vw - 80px)}
- .rl{gap:14px}.cover{width:76px;height:76px}.meta b{font-size:19px}.pp{margin-top:8px;padding:7px 14px 7px 11px}.tb{padding:7px 2px}.trk{margin-top:12px}.box.mus .lede{display:none}.np{position:absolute;left:5vw;top:calc(58px + env(safe-area-inset-top,0px));max-width:70vw}header b{font-size:14px}
+ .rl{gap:14px}.cover{width:76px;height:76px}.meta b{font-size:19px}.pp{margin-top:8px;padding:7px 14px 7px 11px}.tb{padding:7px 2px}.trk{margin-top:12px}.box.mus .lede{display:none}header b{font-size:14px}
  .lede{font-size:17px;margin-bottom:8px}.roots li{font-size:13px;padding:5px 11px}.contact{margin-top:14px;padding-top:12px}.contact a{font-size:18px}
  .pegs{display:none}
  .cap{align-items:flex-end;padding:0 5vw 6vh}
@@ -274,11 +272,11 @@ body{transition:background-color .6s ease,color .6s ease}
 /* ===== glass: frosted, translucent surfaces with a bright rim and soft inner light ===== */
 :root{--g-bg:rgba(255,255,255,.07);--g-bg-h:rgba(255,255,255,.14);--g-rim:rgba(255,255,255,.2);--g-rim-h:rgba(255,255,255,.34);--g-hi:rgba(255,255,255,.28);--g-sh:0 10px 30px rgba(0,0,0,.45);--g-tint:rgba(217,168,106,.28);--g-tint-h:rgba(217,168,106,.42)}
 :root[data-theme="light"]{--g-bg:rgba(255,255,255,.42);--g-bg-h:rgba(255,255,255,.62);--g-rim:rgba(255,255,255,.75);--g-rim-h:rgba(255,255,255,.95);--g-hi:rgba(255,255,255,.9);--g-sh:0 10px 30px rgba(60,40,20,.14);--g-tint:rgba(154,95,28,.2);--g-tint-h:rgba(154,95,28,.32)}
-.glass,header .gt,.links a,.plat a,.roots li,.pp,.btn,.gbtn,.np,.gx,.gnav,.box,.gal .gh h2+*{-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%)}
-header .gt,.links a,.plat a,.roots li,.pp,.btn,.gbtn,.np,.gx{position:relative;overflow:hidden;background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),inset 0 -1px 1px rgba(255,255,255,.04),var(--g-sh);color:var(--ink);text-shadow:none;transition:background-color .3s,border-color .3s,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .3s,color .3s}
+.glass,header .gt,.links a,.plat a,.roots li,.pp,.btn,.gbtn,.gx,.gnav,.box,.gal .gh h2+*{-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%)}
+header .gt,.links a,.plat a,.roots li,.pp,.btn,.gbtn,.gx{position:relative;overflow:hidden;background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),inset 0 -1px 1px rgba(255,255,255,.04),var(--g-sh);color:var(--ink);text-shadow:none;transition:background-color .3s,border-color .3s,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .3s,color .3s}
 /* soft top sheen, like light caught in the glass */
-header .gt::before,.links a::before,.plat a::before,.pp::before,.btn::before,.gbtn::before,.np::before,.gx::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 55%);opacity:.8;transition:opacity .3s}
-header .gt:hover,.links a:hover,.plat a:hover,.gbtn:hover,.np:hover,.gx:hover,header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.gbtn:focus-visible{background:var(--g-bg-h);border-color:var(--g-rim-h);color:var(--ink);transform:translateY(-2px);box-shadow:inset 0 1px 0 var(--g-hi),0 14px 34px rgba(0,0,0,.5),0 0 0 1px rgba(217,168,106,.25)}
+header .gt::before,.links a::before,.plat a::before,.pp::before,.btn::before,.gbtn::before,.gx::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 55%);opacity:.8;transition:opacity .3s}
+header .gt:hover,.links a:hover,.plat a:hover,.gbtn:hover,.gx:hover,header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.gbtn:focus-visible{background:var(--g-bg-h);border-color:var(--g-rim-h);color:var(--ink);transform:translateY(-2px);box-shadow:inset 0 1px 0 var(--g-hi),0 14px 34px rgba(0,0,0,.5),0 0 0 1px rgba(217,168,106,.25)}
 header .gt::after,.links a::after{display:none}
 /* header pill */
 header .gt{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px}
@@ -295,7 +293,6 @@ header .gt{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px}
 .player.soon .pp:hover{transform:none;background:var(--g-tint)}
 /* photos button, now-playing pill, gallery close */
 .gbtn{border-radius:18px}
-.np{border-radius:999px;color:var(--acc)}
 .gx{border-radius:50%}
 .gnav{border-radius:14px;background:var(--g-bg);border:1px solid var(--g-rim)}
 /* track rows: glass highlight on hover instead of a flat tint */
@@ -316,7 +313,6 @@ header .gt{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px}
 }
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.box{background:rgba(18,16,14,.86)}:root[data-theme="light"] .box{background:rgba(250,247,242,.92)}}
 @media(prefers-reduced-transparency:reduce){.box{background:rgba(18,16,14,.94)}:root[data-theme="light"] .box{background:rgba(250,247,242,.96)}}
-@media(max-width:760px){header .np{position:absolute;left:5vw;top:calc(60px + env(safe-area-inset-top,0px));max-width:62vw;z-index:6}}
 /* ===== preloader: six strings between a nut and a bridge; each is tuned and plucked as loading really progresses ===== */
 html.is-loading,html.is-loading body{overflow:hidden}
 #pl{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:var(--bg);color:var(--ink);transition:opacity .9s ease,filter .9s ease,visibility 0s .9s}
@@ -440,7 +436,6 @@ html.nogl .still{display:block;position:absolute;left:50%;top:50%;height:min(88v
 /* text scrolling up slips under a soft fade instead of colliding with the top bar */
 .topfade{position:absolute;z-index:3;left:0;right:0;top:0;height:calc(96px + env(safe-area-inset-top,0px));pointer-events:none;background:linear-gradient(var(--bg) 0%,var(--bg) 45%,rgba(var(--bg-rgb),0) 100%)}
 header{z-index:6}
-.np{z-index:7}
 @media(max-width:760px){.topfade{height:calc(84px + env(safe-area-inset-top,0px))}}
 
 /* phones: the hero sits at the top, under the bar, instead of at the bottom */
@@ -561,6 +556,97 @@ header{position:fixed}
 .pkdl .btn{display:inline-flex;align-items:center;gap:8px;margin:0}
 .pkdl .btn svg{width:16px;height:16px}
 .pkdl span{font-size:13px;color:var(--mute)}
+
+/* ===== mini player: follows the visitor down the page once a song is playing ===== */
+.mp{position:fixed;z-index:12;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100vw - 32px));box-sizing:border-box;display:flex;align-items:center;gap:2px;padding:6px 8px 6px 6px;border-radius:999px;background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),var(--g-sh);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);color:var(--ink);overflow:hidden;
+ transform:translate(-50%,calc(100% + 30px));opacity:0;visibility:hidden;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .35s,visibility 0s .5s}
+.mp.show{transform:translate(-50%,0);opacity:1;visibility:visible;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .35s}
+.mpbar{position:absolute;left:22px;right:22px;bottom:0;height:2px;border-radius:2px;background:rgba(var(--ink-rgb),.12);overflow:hidden;pointer-events:none}
+.mpbar i{display:block;height:100%;background:var(--acc);transform-origin:left;transform:scaleX(0)}
+.mp button{all:unset;cursor:pointer;flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;color:var(--ink);transition:background .2s,color .2s}
+.mp button svg{width:16px;height:16px;fill:currentColor}
+.mp button:hover{background:var(--g-bg-h)}
+.mp button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.mp .mpp{width:42px;height:42px;background:var(--acc);color:#140f0a}.mp .mpp:hover{background:#e8bd83}
+.mp .mpt{flex:1;min-width:0;width:auto;height:auto;display:flex;flex-direction:column;align-items:flex-start;padding:2px 8px 2px 10px;border-radius:12px;place-items:initial}
+.mp .mpt:hover{background:none}.mp .mpt:hover b{color:var(--acc)}
+.mpt b{max-width:100%;font:700 14px/1.25 var(--f);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s}
+.mpt>span{max-width:100%;display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpeq{display:inline-flex;align-items:flex-end;gap:2px;height:9px;flex:none}
+.mpeq i{width:2px;height:100%;background:var(--acc);transform-origin:bottom;transform:scaleY(.3)}
+.mp.playing .mpeq i{animation:eq .9s ease-in-out infinite}.mp.playing .mpeq i:nth-child(2){animation-delay:-.3s}.mp.playing .mpeq i:nth-child(3){animation-delay:-.6s}
+@keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.mp .mpx{width:30px;height:30px;color:var(--mute)}.mp .mpx svg{width:13px;height:13px}
+@media(max-width:760px){html.mpon .cap{padding-bottom:calc(6vh + 64px)}html.mpon .final{padding-bottom:calc(6vh + 86px)}.mp .mpx{display:none}}
+@media(min-width:761px){html.mpon .final{padding-bottom:calc(9vh + 62px)}}
+@media(prefers-reduced-motion:reduce){.mp.playing .mpeq i{animation:none;transform:scaleY(.7)}}
+
+/* share a song */
+.trk li{display:flex;align-items:center;gap:2px}
+.trk li .tb{flex:1;min-width:0}
+.tsh{all:unset;cursor:pointer;flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;color:var(--mute);transition:color .15s,background .15s}
+.tsh svg{width:15px;height:15px}
+.tsh:hover,.tsh:focus-visible{color:var(--acc);background:rgba(var(--ink-rgb),.07)}
+.tsh:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.player.soon .tsh{display:none}
+.tb.cue .ic{animation:cue 1.5s ease-in-out 4}
+@keyframes cue{50%{box-shadow:0 0 0 7px rgba(217,168,106,.35);background:rgba(217,168,106,.25)}}
+.toast{position:fixed;z-index:40;left:50%;top:calc(74px + env(safe-area-inset-top,0px));width:max-content;max-width:calc(100vw - 40px);box-sizing:border-box;padding:10px 18px;border-radius:999px;font:600 13.5px var(--s);color:var(--ink);text-align:center;background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),var(--g-sh);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);opacity:0;transform:translate(-50%,-10px);transition:opacity .3s,transform .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* inspect the guitar */
+.ins{all:unset;box-sizing:border-box;cursor:pointer;position:fixed;z-index:7;left:50%;top:calc(17px + env(safe-area-inset-top,0px));display:inline-flex;align-items:center;gap:8px;padding:9px 17px 9px 13px;border-radius:999px;font:600 13.5px var(--s);color:var(--ink);background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),var(--g-sh);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);
+ opacity:0;visibility:hidden;transform:translate(-50%,-12px);transition:opacity .4s,transform .4s,visibility 0s .4s,background .2s,border-color .2s}
+.ins svg{width:17px;height:17px;color:var(--acc)}
+.ins:hover,.ins:focus-visible{background:var(--g-bg-h);border-color:var(--g-rim-h)}
+.ins:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+html.atend:not(.nogl):not(.inspecting):not(.is-loading) .ins{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .4s,transform .4s,background .2s,border-color .2s}
+@media(max-width:760px){.ins{display:none}}
+@media(min-width:761px){.links .insl{display:none}}
+html.nogl .links .insl{display:none}
+.insp{position:fixed;inset:0;z-index:30;display:none;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
+.insp.drag{cursor:grabbing}
+html.inspecting .insp{display:block}
+.insbar{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:7px 7px 7px 18px;border-radius:999px;white-space:nowrap;cursor:default;background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),var(--g-sh);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);animation:gin .4s ease-out}
+.insbar>span{font-size:13px;color:var(--text2);margin-right:4px}
+.insbar .tch{display:none}
+@media(pointer:coarse){.insbar .tch{display:inline}.insbar .ptr{display:none}}
+.insbar button{all:unset;cursor:pointer;padding:9px 16px;border-radius:999px;font:700 12px var(--f);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--g-rim);transition:background .2s,border-color .2s}
+.insbar button:hover{background:var(--g-bg-h)}
+.insbar .ok{background:var(--g-tint);border-color:rgba(217,168,106,.55)}.insbar .ok:hover{background:var(--g-tint-h)}
+.insbar button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media(max-width:420px){.insbar{padding-left:14px}.insbar>span{font-size:12px}.insbar button{padding:9px 12px}}
+html.inspecting .cap,html.inspecting header,html.inspecting .pegs,html.inspecting .topfade,html.inspecting .hint,html.inspecting .mp{opacity:0!important;pointer-events:none!important;transition:opacity .45s}
+html.insp-out .cap,html.insp-out header,html.insp-out .pegs,html.insp-out .topfade{transition:opacity .6s}
+
+/* booking request form */
+.bklede{margin-top:4px!important}
+.bkf{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px;margin-top:20px}
+.bkf[hidden]{display:none}
+.bkf label{display:flex;flex-direction:column;gap:7px;min-width:0;font:600 11px var(--s);letter-spacing:.13em;text-transform:uppercase;color:var(--mute)}
+.bkf label.w{grid-column:1/-1}
+.bkf label>i{display:none}
+.bkf label b{font:inherit;color:var(--acc)}
+.bkf .opt{text-transform:none;letter-spacing:0;font-weight:400}
+.bkf input,.bkf select,.bkf textarea{box-sizing:border-box;width:100%;min-width:0;font:500 15px var(--s);letter-spacing:0;text-transform:none;color:var(--ink);padding:11px 14px;border-radius:12px;border:1px solid var(--g-rim);background:rgba(var(--ink-rgb),.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);outline:none;color-scheme:dark;transition:border-color .2s,background .2s}
+:root[data-theme="light"] .bkf input,:root[data-theme="light"] .bkf select,:root[data-theme="light"] .bkf textarea{color-scheme:light}
+.bkf select{-webkit-appearance:none;appearance:none;padding-right:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23d9a86a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px}
+.bkf option{background:var(--bg);color:var(--ink)}
+.bkf textarea{min-height:92px;resize:vertical;line-height:1.5}
+.bkf ::placeholder{color:var(--mute)}
+.bkf input:focus,.bkf select:focus,.bkf textarea:focus{border-color:var(--acc);background:rgba(var(--ink-rgb),.1)}
+.bkf [aria-invalid="true"]{border-color:#e0705a}
+.bkgo{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:4px}
+.bkgo .btn{margin:0}
+.bkmsg{font-size:13.5px;color:var(--mute)}.bkmsg.err{color:#e88a74}
+.bkdone{margin-top:18px}
+.bkdone[hidden]{display:none}
+.bkdone h3{display:block;font:800 22px/1.15 var(--f);letter-spacing:-.02em;text-transform:none;color:var(--ink);margin-bottom:6px}
+.bkdone pre{margin:16px 0 0;padding:16px 18px;border-radius:14px;background:rgba(var(--ink-rgb),.06);border:1px solid rgba(var(--ink-rgb),.12);font:500 13px/1.6 'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--text2);white-space:pre-wrap;word-break:break-word;max-height:38vh;overflow:auto}
+.bkdone .brow{margin-top:18px}
+.bkdone .pk{cursor:pointer}
+.bkdone .fine{margin-top:14px!important;font-size:13px!important;color:var(--mute)!important}
+@media(max-width:520px){.bkf{grid-template-columns:1fr;gap:12px}}
 </style>
 </head>
 <body>
@@ -608,7 +694,7 @@ header{position:fixed}
  <div class="topfade" aria-hidden="true"></div>
  <img class="still" src="guitar-still.webp" alt="Joe Roy Jackson's cream Stratocaster with a tortoiseshell pickguard" decoding="async">
 
- <header><b>Joe Roy Jackson</b><button class="np" id="np" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><span></span></button><button class="mn" id="mn" type="button" aria-expanded="false" aria-controls="mnp">Menu</button><a href="#book" class="gt" data-t="112">Get in touch</a></header>
+ <header><b>Joe Roy Jackson</b><button class="mn" id="mn" type="button" aria-expanded="false" aria-controls="mnp">Menu</button><a href="#book" class="gt" data-t="112">Get in touch</a></header>
  <nav class="mnp" id="mnp" aria-label="Sections" hidden>
   <button type="button" data-t="0">Intro</button><button type="button" data-t="19">The man behind the music</button><button type="button" data-t="34">Built on the road</button>
   <button type="button" data-t="49">Front row seat</button><button type="button" data-t="65">The music</button><button type="button" data-t="79">In good company</button>
@@ -684,7 +770,7 @@ header{position:fixed}
  <section class="cap final" data-t="103" data-d="20" data-final><div class="box">
   <small>Booking</small><h2>Bring the blues <i>to you.</i></h2>
   <p>Festivals. Venues. Private events. Let&rsquo;s make some noise.</p>
-  <div class="brow"><a class="btn" href="mailto:Deovolenteblues@aol.com?subject=Booking%20Joe%20Roy%20Jackson">Book Joe</a><button class="pk" id="pkopen" type="button" aria-haspopup="dialog">Press kit</button></div>
+  <div class="brow"><a class="btn" href="mailto:Deovolenteblues@aol.com?subject=Booking%20Joe%20Roy%20Jackson" data-book aria-haspopup="dialog">Book Joe</a><button class="pk" id="pkopen" type="button" aria-haspopup="dialog">Press kit</button></div>
   <div class="contact"><small>Let&rsquo;s make music</small>
    <p>Booking Joe Roy Jackson, collaborations, press and inquiries.</p>
    <div class="crow"><a href="mailto:Deovolenteblues@aol.com">Deovolenteblues@aol.com</a><button class="cp" type="button" data-copy="Deovolenteblues@aol.com" aria-label="Copy email address">Copy</button></div>
@@ -692,9 +778,49 @@ header{position:fixed}
   <form class="join" id="join" novalidate><small>On the list</small><p>Get new show dates and music first. No spam, just the blues.</p>
    <div class="jrow"><input type="email" name="email" autocomplete="email" required placeholder="Your email" aria-label="Your email address"><button class="btn" type="submit">Join</button></div>
    <span class="jmsg" id="jmsg" role="status"></span></form></div>
-  <div class="links"><a href="https://music.apple.com/us/artist/joe-roy-jackson/1453640996" target="_blank" rel="noopener">Listen</a><a href="https://www.youtube.com/@JoeRoyJackson" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/joeroyjackson/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/joeroyjackson/" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/JoeRoy_Jackson" target="_blank" rel="noopener">X</a></div></section>
+  <div class="links"><a href="https://music.apple.com/us/artist/joe-roy-jackson/1453640996" target="_blank" rel="noopener">Listen</a><a href="https://www.youtube.com/@JoeRoyJackson" target="_blank" rel="noopener">YouTube</a><a href="https://www.facebook.com/joeroyjackson/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/joeroyjackson/" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/JoeRoy_Jackson" target="_blank" rel="noopener">X</a><a href="#" class="insl" role="button">Inspect the guitar</a></div></section>
 </div>
 </main>
+<div class="mp" id="mp" role="region" aria-label="Now playing" inert>
+ <span class="mpbar" aria-hidden="true"><i id="mpfill"></i></span>
+ <button class="mpp" id="mppp" type="button" aria-label="Pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+ <button class="mpt" id="mpt" type="button" aria-label="Go to the music"><b id="mpname">Brothers</b><span><span class="mpeq" aria-hidden="true"><i></i><i></i><i></i></span>Joe Roy Jackson &middot; Brothers</span></button>
+ <button id="mpprev" type="button" aria-label="Previous song"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2.2v14H6zM19 5.5v13L9.5 12z"/></svg></button>
+ <button id="mpnext" type="button" aria-label="Next song"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM5 5.5v13l9.5-6.5z"/></svg></button>
+ <button class="mpx" id="mpx" type="button" aria-label="Stop and close the player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<button class="ins" id="ins" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/></svg>Inspect the guitar</button>
+<div class="insp" id="insp" aria-label="Inspecting the guitar">
+ <div class="insbar"><span><span class="ptr">Drag to spin &middot; scroll to zoom</span><span class="tch">Drag to spin &middot; pinch to zoom</span></span><button type="button" id="insreset">Reset</button><button class="ok" type="button" id="insdone">Done</button></div>
+</div>
+<dialog class="pkd" id="bk" aria-labelledby="bkt">
+ <div class="pkw">
+  <button class="gx" id="bkclose" type="button" aria-label="Close booking form"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <small>Booking</small><h2 id="bkt">Book <i>Joe Roy.</i></h2>
+  <p class="bklede">Tell Joe a little about the gig and he&rsquo;ll get back to you.</p>
+  <form class="bkf" id="bkf" novalidate>
+   <label><span>Your name <b aria-hidden="true">*</b></span><input name="name" autocomplete="name" required></label>
+   <label><span>Email <b aria-hidden="true">*</b></span><input name="email" type="email" autocomplete="email" required></label>
+   <label><span>Phone <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
+   <label><span>Type of event</span><select name="type"><option value="">Choose one</option><option>Festival</option><option>Club or venue</option><option>Private party</option><option>Wedding</option><option>Corporate event</option><option>Benefit or fundraiser</option><option>Something else</option></select></label>
+   <label><span>Event date</span><input name="date" type="date"></label>
+   <label><span>Set length</span><select name="len"><option value="">Not sure yet</option><option>One set (about 45 minutes)</option><option>Two sets</option><option>Three sets / the whole night</option></select></label>
+   <label><span>Venue or event name</span><input name="venue" autocomplete="organization"></label>
+   <label><span>City and state</span><input name="city" autocomplete="address-level2" placeholder="e.g. Albany, NY"></label>
+   <label class="w"><span>Budget <span class="opt">(optional)</span></span><input name="budget" placeholder="A range is fine"></label>
+   <label class="w"><span>Anything else Joe should know</span><textarea name="msg" rows="4" placeholder="Crowd size, indoors or out, sound and backline, load-in time&hellip;"></textarea></label>
+   <div class="bkgo"><button class="btn" type="submit">Send request</button><span class="bkmsg" id="bkmsg" role="status"></span></div>
+  </form>
+  <div class="bkdone" id="bkdone" hidden tabindex="-1">
+   <h3 id="bkh">Almost there.</h3>
+   <p id="bkp">Your email app should open with the request written out. Just press send.</p>
+   <pre id="bkpre"></pre>
+   <div class="brow"><button class="btn" id="bkagain" type="button">Open email again</button><button class="pk" id="bkcopy" type="button">Copy request</button><button class="pk" id="bkedit" type="button">Edit</button></div>
+   <p class="fine" id="bkfine">Use Gmail or another web mail? Copy the request and send it to <a href="mailto:Deovolenteblues@aol.com">Deovolenteblues@aol.com</a>.</p>
+  </div>
+ </div>
+</dialog>
 <dialog class="pkd" id="pkd" aria-labelledby="pkt">
  <div class="pkw">
   <button class="gx" id="pkclose" type="button" aria-label="Close press kit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
@@ -4925,13 +5051,13 @@ function viewTarget2(W){if(W<=760||!pv)return 0;if(planW!==W||CAPS.some(o=>o.box
 gsap.ticker.add((time,dt)=>{
  if(!ready||!K)return;
  dt=Math.min(dt,60)/1000;
- const vT=viewTarget();
+ const vT=INS.on?0:viewTarget();
  cp+=NAV?0:(tp-cp)*(RM?1:1-Math.exp(-dt*3.2));            // damped scroll = camera inertia
  spx+=(px-spx)*(1-Math.exp(-dt*2.5));spy+=(py-spy)*(1-Math.exp(-dt*2.5));
  // skip the frame when the picture would be identical: camera settled, no hover drift, no strings ringing, no knob/switch/intro animation
- const moving=Math.abs(vT-vOff)>.4||Math.abs(tp-cp)>1e-5||Math.abs(px-spx)>1e-4||Math.abs(py-spy)>1e-4||wake>0||(window.STRV&&STRV.some(s=>s.U.sA.value>0))||gsap.globalTimeline.getChildren(true,true,false).some(t=>t.isActive());
+ const moving=Math.abs(vT-vOff)>.4||Math.abs(tp-cp)>1e-5||Math.abs(px-spx)>1e-4||Math.abs(py-spy)>1e-4||wake>0||INS.on||INS.b>0||(window.STRV&&STRV.some(s=>s.U.sA.value>0))||gsap.globalTimeline.getChildren(true,true,false).some(t=>t.isActive());
  if(!moving||document.hidden){copy();return}if(wake>0)wake--;
- pose(cp,spx,spy);
+ pose(cp,spx*(1-INS.b),spy*(1-INS.b));if(INS.on||INS.b>0)insFrame(dt);
  vOff+=(vT-vOff)*(RM?1:1-Math.exp(-dt*4));   // the target already glides; this just takes the edge off
  if(Math.abs(vOff)<.3&&!vT){vOff=0;if(cam.view&&cam.view.enabled){cam.clearViewOffset()}}else{const w=cv.clientWidth||innerWidth,h=cv.clientHeight||innerHeight;cam.setViewOffset(w,h,vOff,0,w,h)}
  R.render(scene,cam);
@@ -4955,7 +5081,7 @@ function copy(){if(cp===capAt)return;capAt=cp;
   const side=o.c.classList.contains('R')?1:-1;
   o.c.style.opacity=a>0?1:0;o.c.classList.toggle('on',a>.35);glide(o.box,a,side);glide(o.links,a,1)});
  const ha=sm(cl((.04-cp)/.035));if(ha!==heroLast){heroLast=ha;hint.style.opacity=ha}
- glow.style.transform=`translate3d(0,${-cp*45}vh,0) scale(${1+cp*.4})`}
+ glow.style.transform=`translate3d(0,${-cp*45}vh,0) scale(${1+cp*.4})`;insAvail()}
 addEventListener('pointermove',e=>{if(RM||e.pointerType!=='mouse')return;px=e.clientX/innerWidth-.5;py=e.clientY/innerHeight-.5},{passive:true});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&window.__wake)__wake(6)});
 document.documentElement.addEventListener('mouseleave',()=>{px=py=0});
@@ -4976,12 +5102,71 @@ function travel(t,then){if(!ST)return;
  const fin=()=>{NAV=null;navTw=null;capAt=-1};
  navTw=gsap.to(o,{p:to,duration:RM?.01:Math.min(9,3.4+dist*9),ease:then?'sine.in':'sine.inOut',   // unhurried: about 4.5s to the next stop, never a sprint in the middle   // heading on to the cover: no braking at the guitar, the cover glide carries on
   onUpdate:()=>{scrollTo(0,ST.start+o.p*(ST.end-ST.start));tp=cp=o.p;capAt=-1},onComplete:()=>{fin();then&&then()},onInterrupt:fin})}
-['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev,e=>{if(navTw&&!(ev==='keydown'&&e.key==='Tab')){navTw.kill()}},{passive:true}));
+['wheel','touchstart','keydown'].forEach(ev=>addEventListener(ev,e=>{if(navTw&&!(ev==='keydown'&&(e.key==='Tab'||e.defaultPrevented))){navTw.kill()}},{passive:true}));
 document.querySelectorAll('.pegs button,header .gt,.nudge,.bookcta,.mnp button,.lnow').forEach(b=>b.addEventListener('click',e=>{
  e.preventDefault();if(!ST)return;if(b.closest('.mnp'))window.__menu&&__menu(false);travel(+b.dataset.t);
  if(b.classList.contains('gt')||b.classList.contains('nudge')||b.dataset.t==='112'){let n=0;const bk=document.querySelector('.final .btn'),t=setInterval(()=>{if(bk.closest('.cap').classList.contains('on')||++n>40){clearInterval(t);bk.focus({preventScroll:true})}},150)}
 }));
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(!ready)return;innerWidth!==lastW?(lastW=innerWidth,keys(),smoothPath(),size()):size()},200)});
+// ---- inspect: at the end of the journey the visitor can spin and zoom the guitar freely ----
+const INS={on:false,b:0,yaw:0,pitch:0,dist:1,yT:0,pT:0,dT:1,vy:0,vp:0,c:new THREE.Vector3(),dMin:1,dMax:10,home:[0,0,1],drag:false};
+const _ip=new THREE.Vector3(),_iq=new THREE.Quaternion(),_op=new THREE.Vector3(),_oq=new THREE.Quaternion();
+function insFrame(dt){
+ INS.b+=((INS.on?1:0)-INS.b)*(RM?1:1-Math.exp(-dt*3.4));if(!INS.on&&INS.b<.002){INS.b=0;return}
+ if(!INS.drag){INS.yT+=INS.vy*dt;INS.pT+=INS.vp*dt;const f=Math.exp(-dt*2.6);INS.vy*=f;INS.vp*=f;if(Math.abs(INS.vy)<1e-3)INS.vy=0;if(Math.abs(INS.vp)<1e-3)INS.vp=0}   // a flick keeps it turning, then it coasts to a stop
+ INS.pT=cl(INS.pT,-1.3,1.3);INS.dT=cl(INS.dT,INS.dMin,INS.dMax);
+ const a=RM?1:1-Math.exp(-dt*9);INS.yaw+=(INS.yT-INS.yaw)*a;INS.pitch+=(INS.pT-INS.pitch)*a;INS.dist+=(INS.dT-INS.dist)*a;
+ _ip.copy(cam.position);_iq.copy(cam.quaternion);   // where the story camera would be
+ const ce=Math.cos(INS.pitch);cam.position.set(Math.sin(INS.yaw)*ce,Math.sin(INS.pitch),Math.cos(INS.yaw)*ce).multiplyScalar(INS.dist).add(INS.c);cam.lookAt(INS.c);
+ const e=sm(INS.b);if(e<.999){_op.copy(cam.position);_oq.copy(cam.quaternion);cam.position.lerpVectors(_ip,_op,e);cam.quaternion.copy(_iq).slerp(_oq,e)}}
+const insEl=$('#insp'),insBtn=$('#ins'),HTMLEL=document.documentElement;let insFrom=null;
+function insEnter(e){e&&e.preventDefault&&e.preventDefault();if(!ready||!pv||INS.on||window.NOGL)return;insFrom=document.activeElement;if(navTw)navTw.kill();
+ pose(cp,0,0);scene.updateMatrixWorld();const bx=new THREE.Box3().setFromObject(pv);bx.getCenter(INS.c);const sz=bx.getSize(new THREE.Vector3()),r=sz.length()/2;
+ _op.copy(cam.position).sub(INS.c);const d=_op.length(),tv=Math.tan(cam.fov*DEG/2),th=tv*cam.aspect,wd=Math.max(sz.x,sz.z),fit=(Math.max(sz.y*.54/tv,wd*.6/th)+wd*.4)*.9;   // the whole guitar in frame, whatever the screen shape
+ INS.yaw=INS.yT=Math.atan2(_op.x,_op.z);INS.pitch=INS.pT=Math.asin(cl(_op.y/d,-1,1));INS.dist=d;INS.dT=fit;INS.vy=INS.vp=0;
+ INS.home=[INS.yT,INS.pT,fit];INS.dMin=r*.3;INS.dMax=Math.max(d,fit*1.7);
+ INS.on=true;HTMLEL.classList.remove('insp-out');HTMLEL.classList.add('inspecting');$('main').inert=true;window.__wake&&__wake(10);
+ dispatchEvent(new Event('jrj-inspect'));setTimeout(()=>$('#insdone').focus({preventScroll:true}),60)}
+function insExit(){if(!INS.on)return;INS.on=false;INS.drag=false;INS.vy=INS.vp=0;pts.clear();insEl.classList.remove('drag');
+ HTMLEL.classList.remove('inspecting');HTMLEL.classList.add('insp-out');$('main').inert=false;capAt=-1;window.__wake&&__wake(10);
+ setTimeout(()=>HTMLEL.classList.remove('insp-out'),900);dispatchEvent(new Event('jrj-inspect'));(insFrom&&insFrom.offsetParent?insFrom:insBtn).focus({preventScroll:true})}
+document.querySelectorAll('#ins,.insl').forEach(b=>b.addEventListener('click',insEnter));$('#insdone').addEventListener('click',insExit);
+$('#insreset').addEventListener('click',()=>{[INS.yT,INS.pT,INS.dT]=INS.home;INS.vy=INS.vp=0;INS.yT=INS.yaw+Math.atan2(Math.sin(INS.yT-INS.yaw),Math.cos(INS.yT-INS.yaw))});   // the short way round
+// drag to spin (one finger or the mouse), pinch or scroll to zoom
+const pts=new Map();let pinch0=0,pd0=0,lt=0;
+insEl.addEventListener('pointerdown',e=>{if(e.target.closest('.insbar'))return;try{insEl.setPointerCapture(e.pointerId)}catch(err){}
+ pts.set(e.pointerId,{x:e.clientX,y:e.clientY});INS.drag=true;INS.vy=INS.vp=0;insEl.classList.add('drag');lt=performance.now();
+ if(pts.size===2){const [a,b]=[...pts.values()];pinch0=Math.hypot(a.x-b.x,a.y-b.y);pd0=INS.dT}});
+insEl.addEventListener('pointermove',e=>{const p=pts.get(e.pointerId);if(!p)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;p.x=e.clientX;p.y=e.clientY;
+ if(pts.size>=2){const [a,b]=[...pts.values()],d=Math.hypot(a.x-b.x,a.y-b.y);if(pinch0>0&&d>0)INS.dT=pd0*pinch0/d;return}
+ const k=Math.PI/Math.min(Math.max(innerWidth,320),760),now=performance.now(),ms=Math.max(16,now-lt);lt=now;
+ INS.yT-=dx*k;INS.pT+=dy*k;INS.vy=-dx*k/ms*1000*.5;INS.vp=dy*k/ms*1000*.5});
+const insUp=e=>{if(!pts.delete(e.pointerId))return;if(pts.size<2)pinch0=0;
+  if(pts.size===1)INS.vy=INS.vp=0;   // lifting one finger of a pinch shouldn't fling it
+ if(!pts.size){INS.drag=false;insEl.classList.remove('drag');if(performance.now()-lt>90)INS.vy=INS.vp=0}};
+insEl.addEventListener('pointerup',insUp);insEl.addEventListener('pointercancel',insUp);
+insEl.addEventListener('wheel',e=>{e.preventDefault();INS.dT*=Math.exp(cl(e.deltaY*(e.deltaMode?.04:.0011),-.5,.5))},{passive:false});
+// the button only shows while the booking panel (the end of the journey) is open
+function insAvail(){const f=CAPS.find(o=>'final' in o.c.dataset),at=!!(f&&f.last>.6&&!NAV&&ready);if(at!==HTMLEL.classList.contains('atend')){HTMLEL.classList.toggle('atend',at);dispatchEvent(new Event('jrj-inspect'))}}
+
+// ---- keyboard: space plays and pauses the EP, arrows and Page keys glide between sections, Home and End jump to either end ----
+const KSTOPS=[4,19,34,49,65,79,92,112];
+document.addEventListener('keydown',e=>{if(e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey)return;
+ const t=e.target,k=e.key,on=sel=>t&&t.closest&&t.closest(sel);
+ if(INS.on){const m={ArrowLeft:[.35,0],ArrowRight:[-.35,0],ArrowUp:[0,-.22],ArrowDown:[0,.22]}[k];
+  if(m){e.preventDefault();INS.yT+=m[0];INS.pT+=m[1]}
+  else if(k==='+'||k==='='){e.preventDefault();INS.dT*=.82}else if(k==='-'||k==='_'){e.preventDefault();INS.dT/=.82}
+  else if(k==='Escape'){e.preventDefault();insExit()}
+  else if(['PageUp','PageDown','Home','End'].includes(k)||(k===' '&&!on('button')))e.preventDefault();
+  return}
+ if(on('input,textarea,select,[contenteditable="true"],[role="slider"],dialog,.mnp')||document.querySelector('dialog[open]'))return;
+ if(k===' '||k==='Spacebar'){if(on('button,a,summary,[role="button"]'))return;const P=window.JRJ_PLAYER;if(!P||!P.live)return;e.preventDefault();P.toggle();return}
+ if(!ST)return;
+ if(k==='Home'||k==='End'){e.preventDefault();travel(k==='Home'?0:TOTAL);return}
+ const dir={ArrowDown:1,ArrowRight:1,PageDown:1,ArrowUp:-1,ArrowLeft:-1,PageUp:-1}[k];if(!dir)return;
+ e.preventDefault();
+ const here=NAV?NAV.to*TOTAL:scrollY<ST.start-4?-1:tp*TOTAL,next=dir>0?KSTOPS.find(s=>s>here+.6):KSTOPS.slice().reverse().find(s=>s<here-.6);
+ if(next!=null)travel(next);else if(dir<0&&here>=0)travel(0)});
 </script>
 <script>
 /* Brothers EP player: the five tracks are published next to the page in music/. */
@@ -4994,7 +5179,7 @@ const TRACKS=[
  {t:'Step Out of Your Body',src:'music/04-step-out-of-your-body.mp3',d:'3:34'},
  {t:'Back to the Blues',src:'music/05-back-to-the-blues.mp3',d:'4:58'}];
 const $=q=>document.querySelector(q),PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
-const pl=$('#player'),list=$('#trk'),pp=$('#pp'),np=$('#np'),seek=$('#seek'),cur=$('#cur'),dur=$('#dur'),au=new Audio();au.preload='none';window.JRJ_AUDIO=au;
+const pl=$('#player'),list=$('#trk'),pp=$('#pp'),seek=$('#seek'),cur=$('#cur'),dur=$('#dur'),au=new Audio();au.preload='none';window.JRJ_AUDIO=au;
 const live=TRACKS.some(x=>x.src);pl.classList.toggle('soon',!live);pp.disabled=!live;
 if(COVER){const im=$("#epcover img");im.src=COVER;im.hidden=false}
 const fmt=t=>isFinite(t)?Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0'):'–:––';
@@ -5018,10 +5203,8 @@ if(MS){const H=(a,f)=>{try{MS.setActionHandler(a,f)}catch(e){}};
  au.addEventListener('timeupdate',()=>{try{if(isFinite(au.duration))MS.setPositionState({duration:au.duration,position:Math.min(au.currentTime,au.duration),playbackRate:au.playbackRate||1})}catch(e){}})}
 function ui(){const on=i>=0&&!au.paused;
  rows.forEach((b,k)=>{const a=k===i&&on;b.classList.toggle('on',k===i);b.querySelector('.ic').innerHTML=a?PAUSE:PLAY;b.setAttribute('aria-label',(a?'Pause ':'Play ')+TRACKS[k].t)});
- pp.innerHTML=(on?PAUSE:PLAY)+'<span>'+(on?'Pause':'Play')+'</span>';
- np.hidden=i<0;if(i>=0){np.innerHTML=(on?PAUSE:PLAY)+'<span></span>';np.lastChild.textContent=TRACKS[i].t;np.setAttribute('aria-label',(on?'Pause ':'Play ')+TRACKS[i].t)}}
+ pp.innerHTML=(on?PAUSE:PLAY)+'<span>'+(on?'Pause':'Play')+'</span>';}
 pp.onclick=()=>{if(!live)return;i<0?go(TRACKS.findIndex(x=>x.src)):go(i)};
-np.onclick=()=>go(i);
 ['play','pause'].forEach(e=>au.addEventListener(e,ui));
 au.addEventListener('ended',()=>{let n=i+1;while(n<TRACKS.length&&!TRACKS[n].src)n++;n<TRACKS.length?go(n):(au.currentTime=0,ui())});
 au.addEventListener('loadedmetadata',()=>{dur.textContent=fmt(au.duration)});
@@ -5029,6 +5212,42 @@ au.addEventListener('timeupdate',()=>{cur.textContent=fmt(au.currentTime);if(au.
 seek.addEventListener('input',()=>{if(au.duration)au.currentTime=seek.value/1000*au.duration});
 addEventListener('jrj-volume',e=>{au.volume=Math.max(0,Math.min(1,e.detail))});
 au.addEventListener('error',()=>{if(i>=0){rows[i].disabled=true;TRACKS[i].src=null;i=-1;ui()}});
+// ---- mini player: once a song has started it follows the visitor down the page (tucked away while the music panel itself is open) ----
+const mp=$('#mp'),mpp=$('#mppp'),mpn=$('#mpname'),mpf=$('#mpfill'),musCap=pl.closest('.cap'),HTML=document.documentElement;let started=false,mpOff=false;
+function mpShow(){const vis=started&&i>=0&&!mpOff&&!(musCap&&musCap.classList.contains('on'))&&!HTML.classList.contains('inspecting')&&!(HTML.classList.contains('atend')&&innerWidth<=760);   // on phones the booking panel needs the whole screen
+ mp.classList.toggle('show',vis);HTML.classList.toggle('mpon',vis);mp.inert=!vis}
+function mpUI(on){if(i<0)return;mpp.innerHTML=on?PAUSE:PLAY;mpp.setAttribute('aria-label',(on?'Pause ':'Play ')+TRACKS[i].t);mpn.textContent=TRACKS[i].t;mp.classList.toggle('playing',on);mpShow()}
+au.addEventListener('play',()=>{started=true;mpOff=false;mpUI(true)});au.addEventListener('pause',()=>mpUI(false));
+au.addEventListener('timeupdate',()=>{if(au.duration)mpf.style.transform='scaleX('+(au.currentTime/au.duration).toFixed(4)+')'});
+mpp.onclick=()=>go(i);
+$('#mpprev').onclick=()=>{au.currentTime>3?au.currentTime=0:step(-1)};$('#mpnext').onclick=()=>step(1);
+$('#mpx').onclick=()=>{au.pause();mpOff=true;mpShow()};
+$('#mpt').onclick=()=>{typeof travel==='function'&&typeof ST!=='undefined'&&ST?travel(65):musCap&&musCap.scrollIntoView()};
+if(musCap&&window.MutationObserver)new MutationObserver(()=>{mpShow();if(cueMsg&&musCap.classList.contains('on')){const m=cueMsg;cueMsg='';setTimeout(()=>toast(m,4200),500)}}).observe(musCap,{attributes:true,attributeFilter:['class']});
+addEventListener('jrj-inspect',mpShow);
+
+// ---- share a song: each track gets a button that shares (phones) or copies a link straight to it ----
+const slug=t=>t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const SHARE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14.5V3.5M7.5 7.5L12 3l4.5 4.5M5 11.5V19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+let tt=0;const toast=window.JRJ_TOAST=(m,ms=2400)=>{const el=$('#toast');if(!el)return;el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),ms)};
+const copyText=async t=>{try{await navigator.clipboard.writeText(t);return true}catch(e){}
+ try{const a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;opacity:0;top:0;left:0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();return ok}catch(e){return false}};
+window.JRJ_COPY=copyText;
+TRACKS.forEach((x,k)=>{if(!x.src)return;const s=document.createElement('button');s.type='button';s.className='tsh';s.innerHTML=SHARE;s.setAttribute('aria-label','Share a link to '+x.t);s.title='Share this song';
+ s.onclick=async()=>{const url=location.href.split('#')[0]+'#song-'+slug(x.t);
+  if(navigator.share&&matchMedia('(pointer:coarse)').matches){try{await navigator.share({title:x.t+' — Joe Roy Jackson',text:'Listen to “'+x.t+'” by Joe Roy Jackson',url});return}catch(e){if(e&&e.name==='AbortError')return}}
+  const ok=await copyText(url);toast(ok?'Link to “'+x.t+'” copied':'Couldn’t copy the link: '+url,ok?2400:6000)};
+ rows[k].parentNode.appendChild(s)});
+
+// ---- arriving from a shared song link: glide to the music and have that song ready to play ----
+let cueMsg='';
+const want=(location.hash.match(/^#song-([a-z0-9-]+)$/)||[])[1],wk=want?TRACKS.findIndex(x=>x.src&&slug(x.t)===want):-1;
+if(wk>=0){i=wk;au.src=TRACKS[wk].src;au.preload='metadata';ui();meta();rows[wk].classList.add('cue');setTimeout(()=>rows[wk].classList.remove('cue'),7000);
+ cueMsg='Press play to hear “'+TRACKS[wk].t+'”';
+ const land=()=>setTimeout(()=>{if(typeof travel==='function'&&typeof ST!=='undefined'&&ST)travel(65);else if(musCap)musCap.scrollIntoView({behavior:'smooth'})},700);
+ if(window.__pl&&document.getElementById('pl')){const o=__pl.onExit;__pl.onExit=()=>{o&&o();land()}}else land()}
+
+window.JRJ_PLAYER={live,toggle:()=>pp.onclick(),step};
 })();
 </script>
 <script>
@@ -5125,8 +5344,8 @@ view.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouch
    an=C.createAnalyser();an.fftSize=16384;an.smoothingTimeConstant=.5;src.connect(an);an.connect(C.destination);sr=C.sampleRate;buf=new Float32Array(an.frequencyBinCount);window.JRJ_AN=an}
   if(C.state!=='running')C.resume()}catch(e){an=null}};
  // iOS/Safari only let a page start audio processing inside the tap itself, so hook the player's buttons directly
- document.addEventListener('pointerdown',e=>{if(e.target.closest('#pp,.tb,#np'))setup()},true);
- document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest&&e.target.closest('#pp,.tb,#np'))setup()},true);
+ document.addEventListener('pointerdown',e=>{if(e.target.closest('#pp,.tb,#mp button'))setup()},true);
+ document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.closest&&e.target.closest('#pp,.tb,#mp button'))setup()},true);
  au.addEventListener('play',()=>{setup();quiet=0});
  const MAXA=.0075;                                    // ~0.7 mm swing at the 12th fret: visible up close, never cartoonish
  let last=performance.now(),nextPick=0;
@@ -5317,7 +5536,7 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
  // the guitar says hello: one soft low-E pluck (synthesised, no file), only after a first tap, only once, and never over the music
  let done=false;try{done=sessionStorage.getItem('jrj-hello')==='1'}catch(e){}
  const hello=e=>{if(done)return;done=true;try{sessionStorage.setItem('jrj-hello','1')}catch(err){}
-  if(e.target.closest&&e.target.closest('#pp,.tb,#np,a,button,input'))return;const au=window.JRJ_AUDIO;if(au&&!au.paused)return;
+  if(e.target.closest&&e.target.closest('#pp,.tb,#mp,a,button,input'))return;const au=window.JRJ_AUDIO;if(au&&!au.paused)return;
   try{const C=new (window.AudioContext||window.webkitAudioContext)(),sr=C.sampleRate,f=82.41,N=Math.round(sr/f),len=Math.round(sr*2.6),buf=C.createBuffer(1,len,sr),x=buf.getChannelData(0),ring=new Float32Array(N);
    for(let i=0;i<N;i++)ring[i]=(Math.random()*2-1)*(.5+.5*Math.sin(Math.PI*i/N));   // Karplus-Strong plucked string
    for(let i=0,k=0;i<len;i++){const a=ring[k],b=ring[(k+1)%N];ring[k]=.4985*(a+b);x[i]=a;k=(k+1)%N}
@@ -5327,6 +5546,46 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
    if(window.STRV&&STRV[5]){const s=STRV[5];s.lvl=Math.max(s.lvl,.9)}                     // and the low E on the 3D guitar rings with it
    src.onended=()=>C.close()}catch(err){}};
  if(!matchMedia('(prefers-reduced-motion:reduce)').matches)addEventListener('pointerdown',hello,{once:true,passive:true});
+})();
+</script>
+<script>
+/* booking request form: lays the gig details out in a tidy email to Joe.
+   To have requests arrive without the visitor's email app, paste a form service address (e.g. Formspree) into BOOK_ENDPOINT. */
+(()=>{const BOOK_ENDPOINT='',TO='Deovolenteblues@aol.com';
+ const $=id=>document.getElementById(id),d=$('bk'),f=$('bkf'),done=$('bkdone'),msg=$('bkmsg');if(!d||!f)return;
+ let last=null,text='',subj='';
+ const open=e=>{e&&e.preventDefault();last=document.activeElement;f.hidden=false;done.hidden=true;msg.textContent='';msg.className='bkmsg';
+  d.showModal();document.body.classList.add('gopen');d.querySelector('.pkw').scrollTop=0;setTimeout(()=>f.elements.name.focus(),60)};
+ document.querySelectorAll('[data-book]').forEach(a=>a.addEventListener('click',open));
+ $('bkclose').onclick=()=>d.close();d.addEventListener('click',e=>{if(e.target===d)d.close()});
+ d.addEventListener('close',()=>{document.body.classList.remove('gopen');last&&last.focus({preventScroll:true})});
+ const now=new Date();f.elements.date.min=new Date(now-now.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+ const nice=v=>{if(!v)return '';const [y,m,dd]=v.split('-').map(Number);return new Date(y,m-1,dd).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'})};
+ f.addEventListener('input',e=>{e.target.removeAttribute('aria-invalid');if(msg.classList.contains('err'))msg.textContent=''});
+ const mail=()=>{const a=document.createElement('a');a.href='mailto:'+TO+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(text);a.click()};
+ const show=sent=>{$('bkh').textContent=sent?'Request sent.':'Almost there.';
+  $('bkp').textContent=sent?'Thanks! Joe has your request and will be in touch soon. Here’s a copy for your records.':'Your email app should open with the request written out below. Just press send.';
+  $('bkpre').textContent=text;$('bkagain').hidden=sent;$('bkfine').hidden=sent;f.hidden=true;done.hidden=false;done.focus({preventScroll:true})};
+ f.addEventListener('submit',async e=>{e.preventDefault();
+  const v=n=>(f.elements[n].value||'').trim(),bad=[];
+  [...f.elements].forEach(x=>x.removeAttribute('aria-invalid'));
+  if(!v('name'))bad.push('name');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email')))bad.push('email');
+  if(bad.length){bad.forEach(n=>f.elements[n].setAttribute('aria-invalid','true'));msg.className='bkmsg err';
+   msg.textContent=bad.length>1?'Please add your name and email.':bad[0]==='name'?'Please add your name.':'Please enter a valid email so Joe can reply.';f.elements[bad[0]].focus();return}
+  const type=v('type'),date=nice(v('date')),L=(k,x)=>x?k+' '+x:null;
+  subj='Booking request: '+[type||'Gig',date&&('on '+date.replace(/^\w+, /,'')),v('city')&&('in '+v('city'))].filter(Boolean).join(' ');
+  text=['BOOKING REQUEST','',
+   'THE GIG',L('Type of event:',type||'Not specified'),L('Date:',date||'Flexible / not set yet'),L('Venue / event:',v('venue')),L('City:',v('city')),L('Set length:',v('len')),L('Budget:',v('budget')),'',
+   'CONTACT',L('Name:',v('name')),L('Email:',v('email')),L('Phone:',v('phone')),
+   ...(v('msg')?['','DETAILS',v('msg')]:[]),'','Sent from the booking form on joeroyjackson.com'].filter(x=>x!==null).join('\n');
+  if(BOOK_ENDPOINT){const btn=f.querySelector('[type=submit]');btn.disabled=true;msg.className='bkmsg';msg.textContent='Sending…';
+   try{const fd=new FormData();fd.append('_subject',subj);fd.append('_replyto',v('email'));fd.append('email',v('email'));fd.append('name',v('name'));fd.append('message',text);
+    const r=await fetch(BOOK_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:fd});if(!r.ok)throw 0;show(true)}
+   catch(err){msg.className='bkmsg err';msg.textContent='That didn’t go through, so we’ll open your email app instead…';setTimeout(()=>{mail();show(false)},1200)}
+   finally{btn.disabled=false}return}
+  mail();show(false)});
+ $('bkagain').onclick=mail;$('bkedit').onclick=()=>{done.hidden=true;f.hidden=false;f.elements.name.focus()};
+ $('bkcopy').onclick=async()=>{const b=$('bkcopy'),ok=window.JRJ_COPY?await JRJ_COPY('To: '+TO+'\nSubject: '+subj+'\n\n'+text):false;b.textContent=ok?'Copied':'Select it above';setTimeout(()=>b.textContent='Copy request',1800)};
 })();
 </script>
 <script>

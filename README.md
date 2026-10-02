@@ -34,3 +34,10 @@ The page needs to be served over http(s); opening `index.html` straight from dis
 
 - Replace the four `SITE_URL` placeholders in the `<head>` of `index.html` with the real address (e.g. `joeroyjackson.com`) so link previews work.
 - To connect the mailing list, set `LIST_ENDPOINT` in `index.html` (search for it) to your list service's form address. Until then the Join button opens a pre-filled email to Joe.
+- Optional: to have booking requests arrive without the visitor's email app, set `BOOK_ENDPOINT` in `index.html` to a form service address (e.g. Formspree). Until then the booking form opens a neatly laid-out, pre-filled email to Joe.
+
+## Handy extras
+
+- **Share a song:** every track has a share button. Links look like `joeroyjackson.com/#song-brothers` and open the page at the music with that song ready.
+- **Keyboard:** space plays and pauses, arrow and Page keys move between sections, Home and End jump to the start and to booking.
+- **Inspect the guitar:** at the end of the page, a button lets visitors spin and zoom the guitar.
