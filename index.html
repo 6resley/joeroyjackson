@@ -350,6 +350,20 @@ html.is-loading,html.is-loading body{overflow:hidden}
 .vmeta b{font:700 15px var(--f);color:var(--ink)}
 .vmeta em{font-style:normal;color:var(--mute);white-space:nowrap}
 .vlist .vcard+.vcard{margin-top:14px}
+/* several videos: a swipeable row that keeps the panel the same size, with arrows and a counter */
+.vlist.vtrack{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;padding:2px 2px 4px;margin:4px -2px 0;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+.vlist.vtrack.atend{-webkit-mask-image:none;mask-image:none}
+.vlist.vtrack::-webkit-scrollbar{display:none}
+.vlist.vtrack .vcard{flex:0 0 86%;min-width:0;scroll-snap-align:start;margin-top:0}
+.vnav{display:flex;align-items:center;gap:10px;margin-top:12px}
+.vnav[hidden]{display:none}
+.vnav button{all:unset;cursor:pointer;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:var(--ink);background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);transition:background .2s,border-color .2s,opacity .2s}
+.vnav button svg{width:16px;height:16px}
+.vnav button:hover{background:var(--g-bg-h);border-color:var(--g-rim-h)}
+.vnav button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.vnav button:disabled{opacity:.35;cursor:default}
+.vnav span{font:600 12px var(--s);letter-spacing:.12em;color:var(--mute);font-variant-numeric:tabular-nums;margin-left:4px}
+@media(prefers-reduced-motion:reduce){.vlist.vtrack{scroll-behavior:auto}}
 .vdlg{border:0;padding:0;margin:0;width:100%;max-width:none;height:100%;max-height:none;background:rgba(0,0,0,.92);color:var(--ink);overscroll-behavior:contain}
 .vdlg::backdrop{background:rgba(0,0,0,.6)}
 .vdlg[open]{display:grid;place-items:center;animation:gin .35s ease-out}
@@ -5190,7 +5204,7 @@ document.addEventListener('keydown',e=>{if(e.defaultPrevented||e.altKey||e.ctrlK
   else if(k==='Escape'){e.preventDefault();insExit()}
   else if(['PageUp','PageDown','Home','End'].includes(k)||(k===' '&&!on('button')))e.preventDefault();
   return}
- if(on('input,textarea,select,[contenteditable="true"],[role="slider"],dialog,.mnp')||document.querySelector('dialog[open]'))return;
+ if(on('input,textarea,select,[contenteditable="true"],[role="slider"],dialog,.mnp,.vtrack')||document.querySelector('dialog[open]'))return;
  if(k===' '||k==='Spacebar'){if(on('button,a,summary,[role="button"]'))return;const P=window.JRJ_PLAYER;if(!P||!P.live)return;e.preventDefault();P.toggle();return}
  if(!ST)return;
  if(k==='Home'||k==='End'){e.preventDefault();travel(k==='Home'?0:TOTAL);return}
@@ -5539,6 +5553,17 @@ VIDEOS.forEach(v=>{const b=document.createElement('a');b.className='vcard';b.hre
  const im=b.querySelector('img');im.src=v.thumb||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg');im.onerror=()=>im.remove();   // if the thumbnail can't load, the card keeps its warm gradient
  b.querySelector('b').textContent=v.title;b.querySelector('em').textContent=v.kind||'';
  b.addEventListener('click',()=>{const au=window.JRJ_AUDIO;if(au&&!au.paused)au.pause()});list.appendChild(b)});   // opens YouTube (app on phones); pause the EP first
+// more than one video: swipe or use the arrows; the panel keeps its size
+if(VIDEOS.length>1){list.classList.add('vtrack');list.setAttribute('role','region');list.setAttribute('aria-label','Videos');list.tabIndex=0;
+ const AR=d=>'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+(d<0?'M15 6l-6 6 6 6':'M9 6l6 6-6 6')+'" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+ const nav=document.createElement('div');nav.className='vnav';nav.innerHTML='<button type="button" aria-label="Previous video">'+AR(-1)+'</button><button type="button" aria-label="Next video">'+AR(1)+'</button><span aria-live="polite"></span>';list.after(nav);
+ const [pv,nx]=nav.querySelectorAll('button'),ct=nav.querySelector('span'),cards=[...list.children];
+ const at=()=>{const w=cards[0].offsetWidth+14;return list.scrollLeft+list.clientWidth>=list.scrollWidth-4?cards.length-1:Math.round(list.scrollLeft/w)};
+ const upd=()=>{const k=at();ct.textContent=(k+1)+' / '+cards.length;pv.disabled=k===0;nx.disabled=k===cards.length-1;list.classList.toggle('atend',k===cards.length-1)};
+ let tgt=null,te=0;const go=k=>{k=Math.max(0,Math.min(cards.length-1,k));tgt=k;list.scrollTo({left:cards[k].offsetLeft-cards[0].offsetLeft})};   // quick repeated taps count from where the row is heading
+ const step=d=>go((tgt??at())+d);pv.onclick=()=>step(-1);nx.onclick=()=>step(1);
+ list.addEventListener('keydown',e=>{if(e.target!==list)return;if(e.key==='ArrowRight'){e.preventDefault();step(1)}else if(e.key==='ArrowLeft'){e.preventDefault();step(-1)}});
+ let t=0;list.addEventListener('scroll',()=>{cancelAnimationFrame(t);t=requestAnimationFrame(upd);clearTimeout(te);te=setTimeout(()=>{tgt=null},160)},{passive:true});addEventListener('resize',upd);upd()}
 function open(v){last=document.activeElement;const au=window.JRJ_AUDIO;if(au&&!au.paused)au.pause();      // don't play two things at once
  frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="'+v.title.replace(/"/g,'&quot;')+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
  $('#vtitle').textContent=v.title;$('#vyt').href='https://www.youtube.com/watch?v='+v.id;
