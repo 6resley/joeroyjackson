@@ -347,7 +347,7 @@ html.is-loading,html.is-loading body{overflow:hidden}
 .vcard:hover .vplay,.vcard:focus-visible .vplay{transform:scale(1.08);background:rgba(217,168,106,.45)}
 .vcard:focus-visible .vthumb{outline:2px solid var(--ink);outline-offset:3px}
 .vmeta{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:13.5px}
-.vmeta b{font:700 15px var(--f);color:var(--ink)}
+.vmeta b{font:700 15px var(--f);color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .vmeta em{font-style:normal;color:var(--mute);white-space:nowrap}
 .vlist .vcard+.vcard{margin-top:14px}
 /* 3D vertical carousel (videos, gig dates): one card in front, its neighbours tilted back and blurred above and below; scroll over it, swipe, or use the dots */
@@ -5546,9 +5546,9 @@ view.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouch
 (()=>{
 const VIDEOS=[
  {id:'WmlGrS1lD14',title:'“Key to the Highway” on the JNC Podcast',kind:'Performance'},
- {id:'HmtsWaex3MY',start:1172,title:'Joe Roy Jackson interview',kind:'Interview'},   // opens at Joe's segment (19:32)
- {id:'RxbTXVLQldM',title:'Joe Roy Jackson on video',kind:'Video'},
- {id:'EDHuOhsIhgQ',title:'Joe Roy Jackson on video',kind:'Video'},
+ {id:'HmtsWaex3MY',start:1172,title:'Joe Roy Jackson interview',kind:'Interview',auto:true},   // opens at Joe's segment (19:32)
+ {id:'RxbTXVLQldM',title:'Joe Roy Jackson on video',kind:'Video',auto:true},
+ {id:'EDHuOhsIhgQ',title:'Joe Roy Jackson on video',kind:'Video',auto:true},
 ];
 const $=q=>document.querySelector(q),list=$('#vlist'),dlg=$('#vdlg'),frame=$('#vframe');let last=null;
 const PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
@@ -5556,6 +5556,10 @@ VIDEOS.forEach(v=>{const b=document.createElement('a');b.className='vcard';b.hre
  b.innerHTML='<div class="vthumb"><img alt="" loading="lazy"><span class="vplay">'+PLAY+'</span></div><div class="vmeta"><b></b><em></em></div><span class="vgo">Watch now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
  const im=b.querySelector('img');im.src=v.thumb||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg');im.onerror=()=>im.remove();   // if the thumbnail can't load, the card keeps its warm gradient
  b.querySelector('b').textContent=v.title;b.querySelector('em').textContent=v.kind||'';
+ // auto:true pulls the video's real title from YouTube (falls back to the title above if YouTube can't be reached)
+ if(v.auto){const w='https://www.youtube.com/watch?v='+v.id,j=u=>fetch(u).then(r=>r.ok?r.json():Promise.reject()).then(d=>d&&d.title?d.title:Promise.reject());
+  j('https://www.youtube.com/oembed?format=json&url='+encodeURIComponent(w)).catch(()=>j('https://noembed.com/embed?url='+encodeURIComponent(w)))
+   .then(t=>{v.title=t;b.querySelector('b').textContent=t;b.setAttribute('aria-label',b.getAttribute('aria-label').replace(/:.*$/,': '+t));dispatchEvent(new Event('resize'))}).catch(()=>{})}
  b.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();open(v)});list.appendChild(b)});   // plays in the page; the link still works for opening in a new tab
 function open(v){last=document.activeElement;const au=window.JRJ_AUDIO;if(au&&!au.paused)au.pause();      // don't play two things at once
  frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'?'+(v.start?'start='+v.start+'&':'')+'autoplay=1&rel=0&modestbranding=1&playsinline=1" title="'+v.title.replace(/"/g,'&quot;')+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
