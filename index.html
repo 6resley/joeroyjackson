@@ -291,16 +291,17 @@ body.gopen{overflow:hidden}
 body{transition:background-color .6s ease,color .6s ease}
 .box,.box *,header,header *,.links a,.gal,.gal *{transition-property:color,background-color,border-color,text-shadow;transition-duration:.6s}
 /* light mode: flipped with the guitar's pickup-selector switch */
-:root[data-theme="light"]{--bg:#f2ede4;--bg-rgb:242,237,228;--ink:#1a1612;--ink-rgb:26,22,18;--mute:#6d655a;--acc:#9a5f1c;--text2:#3e372f;--tshadow:0 1px 1px rgba(242,237,228,.6),0 0 18px rgba(242,237,228,.95)}
+:root[data-theme="light"]{--bg:#f2ede4;--bg-rgb:242,237,228;--ink:#1a1612;--ink-rgb:26,22,18;--mute:#6d655a;--acc:#886620;--text2:#3e372f;--tshadow:0 1px 1px rgba(242,237,228,.6),0 0 18px rgba(242,237,228,.95)}
 
 :root[data-theme="light"] .pp,:root[data-theme="light"] .tb.on .ic{color:#fff}
-:root[data-theme="light"] .pp:hover{background:#b8762c}
+:root[data-theme="light"] .pp:hover{background:#a07a2a}
+:root[data-theme="light"] .box h2 i,:root[data-theme="light"] .box.say i,:root[data-theme="light"] .gh h2 i,:root[data-theme="light"] .pkw h2 i{color:#b5832c}   /* the big headline words get a brighter gold; small labels keep the deeper gold so they stay readable */
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .sr:focus-visible{position:fixed;left:50%;top:14px;transform:translateX(-50%);width:auto;height:auto;clip:auto;z-index:20;padding:8px 14px;border-radius:30px;background:var(--ink);color:var(--bg);font:600 13px var(--s)}
 
 /* ===== glass: frosted, translucent surfaces with a bright rim and soft inner light ===== */
 :root{--g-bg:rgba(255,255,255,.07);--g-bg-h:rgba(255,255,255,.14);--g-rim:rgba(255,255,255,.2);--g-rim-h:rgba(255,255,255,.34);--g-hi:rgba(255,255,255,.28);--g-sh:0 10px 30px rgba(0,0,0,.45);--g-tint:rgba(217,168,106,.28);--g-tint-h:rgba(217,168,106,.42)}
-:root[data-theme="light"]{--g-bg:rgba(255,255,255,.42);--g-bg-h:rgba(255,255,255,.62);--g-rim:rgba(255,255,255,.75);--g-rim-h:rgba(255,255,255,.95);--g-hi:rgba(255,255,255,.9);--g-sh:0 10px 30px rgba(60,40,20,.14);--g-tint:rgba(154,95,28,.2);--g-tint-h:rgba(154,95,28,.32)}
+:root[data-theme="light"]{--g-bg:rgba(255,255,255,.42);--g-bg-h:rgba(255,255,255,.62);--g-rim:rgba(255,255,255,.75);--g-rim-h:rgba(255,255,255,.95);--g-hi:rgba(255,255,255,.9);--g-sh:0 10px 30px rgba(60,40,20,.14);--g-tint:rgba(136,102,32,.2);--g-tint-h:rgba(136,102,32,.32)}
 .glass,header .gt,.links a,.plat a,.roots li,.pp,.btn,.gbtn,.gx,.gnav,.box,.gal .gh h2+*{-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%)}
 header .gt,.links a,.plat a,.roots li,.pp,.btn,.gbtn,.gx{position:relative;overflow:hidden;background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),inset 0 -1px 1px rgba(255,255,255,.04),var(--g-sh);color:var(--ink);text-shadow:none;transition:background-color .3s,border-color .3s,transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .3s,color .3s}
 /* soft top sheen, like light caught in the glass */
