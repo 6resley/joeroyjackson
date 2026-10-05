@@ -31,7 +31,7 @@ The page needs to be served over http(s); opening `index.html` straight from dis
 
 ## Before launch
 
-- To connect the mailing list, set `LIST_ENDPOINT` in `index.html` (search for it) to your list service's form address. Until then the Join button opens a pre-filled email to Joe.
+- The mailing list sign-up sends emails to Joe's Kit form (`LIST_ENDPOINT` in `index.html`). Kit emails each new subscriber a confirmation link; manage the list at kit.com.
 - Optional: to have booking requests arrive without the visitor's email app, set `BOOK_ENDPOINT` in `index.html` to a form service address (e.g. Formspree). Until then the booking form opens a neatly laid-out, pre-filled email to Joe.
 
 ## Handy extras

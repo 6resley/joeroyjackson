@@ -5454,14 +5454,17 @@ view.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouch
   for(let i=0;i<8;i++){v.set(i&1?b.max.x:b.min.x,i&2?b.max.y:b.min.y,i&4?b.max.z:b.min.z).applyMatrix4(HSM.matrixWorld).project(cam);if(v.z<1)top=Math.min(top,r.top+(1-v.y)/2*r.height)}
   if(top>1e8)return;const hb=hdr.getBoundingClientRect().bottom,gap=top-hb,h=base.h;
   o.c.style.paddingTop=Math.max(hb+10,hb+(gap-h)/2+h*.25).toFixed(1)+'px'})})();
-/* mailing list: posts to LIST_ENDPOINT (a Mailchimp / Formspree / Buttondown form address) once one is set; until then it opens an email to Joe with the request filled in */
-(()=>{const LIST_ENDPOINT='';const f=document.getElementById('join');if(!f)return;const inp=f.querySelector('input'),msg=document.getElementById('jmsg'),btn=f.querySelector('button');
+/* mailing list: sign-ups go to Joe's Kit list (Kit emails them a confirmation link); with no LIST_ENDPOINT it opens an email to Joe instead */
+(()=>{const LIST_ENDPOINT='https://app.kit.com/forms/10003068/subscriptions'/* Joe's Kit (ConvertKit) form */;const f=document.getElementById('join');if(!f)return;const inp=f.querySelector('input'),msg=document.getElementById('jmsg'),btn=f.querySelector('button');
  const say=(t,ok)=>{msg.textContent=t;msg.classList.toggle('ok',!!ok)};
  f.addEventListener('submit',async e=>{e.preventDefault();const v=inp.value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){say('Please enter a valid email address.');inp.focus();return}
   if(!LIST_ENDPOINT){location.href='mailto:Deovolenteblues@aol.com?subject='+encodeURIComponent('Add me to the mailing list')+'&body='+encodeURIComponent('Please add '+v+' to the Joe Roy Jackson mailing list for show dates and new music.');say('Almost there: just hit send on the email that opened.',true);return}
   btn.disabled=true;say('Signing you up…');
-  try{const r=await fetch(LIST_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)});if(!r.ok)throw 0;say('You\u2019re on the list. See you at the next show.',true);inp.value=''}
-  catch(_){say('Couldn\u2019t sign you up just now. Email Deovolenteblues@aol.com instead.')}btn.disabled=false})})();
+  const fd=new FormData();fd.append('email_address',v);
+  const ok=()=>{say('Almost there! Check your email to confirm, then you\u2019re on the list.',true);inp.value=''};
+  try{const r=await fetch(LIST_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:fd});if(!r.ok)throw 0;ok()}
+  catch(_){try{await fetch(LIST_ENDPOINT,{method:'POST',mode:'no-cors',body:fd});ok()}   // if the browser won't let us read Kit's reply, the sign-up still goes through
+   catch(__){say('Couldn\u2019t sign you up just now. Email Deovolenteblues@aol.com instead.')}}btn.disabled=false})})();
 /* add to calendar: every upcoming show with data-date gets Google and Apple/Outlook buttons (all-day event; add data-start="19:30" and data-end for a timed one) */
 (()=>{const pad=n=>String(n).padStart(2,'0'),ic='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
  document.querySelectorAll('li.up[data-date]').forEach(li=>{const d=li.dataset,ymd=d.date.replace(/-/g,''),t=d.title,w=d.where||'';
