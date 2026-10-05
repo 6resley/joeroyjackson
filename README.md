@@ -9,7 +9,7 @@ The website for blues guitarist Joe Roy Jackson: a scroll-driven 3D Stratocaster
 | `index.html` | The whole site (styles and scripts are inline) |
 | `assets/guitar.glb` | The 3D guitar model, loaded by the page |
 | `assets/tex/` | The guitar's textures (headstock, fretboard, tortoiseshell, decals) and studio lighting, kept out of the page so it stays light |
-| `music/` | The five *Brothers* tracks and the EP cover |
+| `music/` | The songs and cover art for all four releases (*Brothers*, *So You Think It’s Easy Being Me*, *Hot Stuff*, *Back to the Blues*); add albums in the `ALBUMS`/`TRACKS` lists in `index.html` |
 | `photos/` | Cover photo and the gallery |
 | `guitar-still.webp` | Still image shown on devices that can't run 3D |
 | `amp-panel*.webp` | The Vibro-King panel between the cover and the guitar |
