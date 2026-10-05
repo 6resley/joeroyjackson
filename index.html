@@ -5545,10 +5545,13 @@ view.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouch
 (()=>{
 const VIDEOS=[
  {id:'WmlGrS1lD14',title:'“Key to the Highway” on the JNC Podcast',kind:'Performance',thumb:'videos/key-to-the-highway.jpg'},
+ {id:'HmtsWaex3MY',start:1172,title:'Joe Roy Jackson interview',kind:'Interview'},   // opens at Joe's segment (19:32)
+ {id:'RxbTXVLQldM',title:'Joe Roy Jackson on video',kind:'Video'},
+ {id:'EDHuOhsIhgQ',title:'Joe Roy Jackson on video',kind:'Video'},
 ];
 const $=q=>document.querySelector(q),list=$('#vlist'),dlg=$('#vdlg'),frame=$('#vframe');let last=null;
 const PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
-VIDEOS.forEach(v=>{const b=document.createElement('a');b.className='vcard';b.href='https://www.youtube.com/watch?v='+v.id;b.target='_blank';b.rel='noopener';b.setAttribute('aria-label','Watch on YouTube: '+v.title);
+VIDEOS.forEach(v=>{const b=document.createElement('a');b.className='vcard';b.href='https://www.youtube.com/watch?v='+v.id+(v.start?'&t='+v.start+'s':'');b.target='_blank';b.rel='noopener';b.setAttribute('aria-label','Watch on YouTube: '+v.title);
  b.innerHTML='<div class="vthumb"><img alt="" loading="lazy"><span class="vplay">'+PLAY+'</span></div><div class="vmeta"><b></b><em></em></div><span class="vgo">Watch on YouTube <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
  const im=b.querySelector('img');im.src=v.thumb||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg');im.onerror=()=>im.remove();   // if the thumbnail can't load, the card keeps its warm gradient
  b.querySelector('b').textContent=v.title;b.querySelector('em').textContent=v.kind||'';
@@ -5565,7 +5568,7 @@ if(VIDEOS.length>1){list.classList.add('vtrack');list.setAttribute('role','regio
  list.addEventListener('keydown',e=>{if(e.target!==list)return;if(e.key==='ArrowRight'){e.preventDefault();step(1)}else if(e.key==='ArrowLeft'){e.preventDefault();step(-1)}});
  let t=0;list.addEventListener('scroll',()=>{cancelAnimationFrame(t);t=requestAnimationFrame(upd);clearTimeout(te);te=setTimeout(()=>{tgt=null},160)},{passive:true});addEventListener('resize',upd);upd()}
 function open(v){last=document.activeElement;const au=window.JRJ_AUDIO;if(au&&!au.paused)au.pause();      // don't play two things at once
- frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="'+v.title.replace(/"/g,'&quot;')+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+ frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'?'+(v.start?'start='+v.start+'&':'')+'autoplay=1&rel=0&modestbranding=1&playsinline=1" title="'+v.title.replace(/"/g,'&quot;')+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
  $('#vtitle').textContent=v.title;$('#vyt').href='https://www.youtube.com/watch?v='+v.id;
  dlg.showModal();document.body.classList.add('gopen');$('#vclose').focus()}
 $('#vclose').onclick=()=>dlg.close();
