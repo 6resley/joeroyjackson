@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>try{if(localStorage.getItem('jrj-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}document.documentElement.classList.add('is-loading')</script>
+<script>try{if(localStorage.getItem('jrj-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}document.documentElement.classList.add('is-loading');window.NARROW=()=>innerWidth<=760||(innerWidth<=1100&&innerHeight>innerWidth)</script>
 <script>window.NOGL=location.hash==='#still'||(()=>{try{const c=document.createElement('canvas');return !(c.getContext('webgl2')||c.getContext('webgl'))}catch(e){return true}})();if(window.NOGL)document.documentElement.classList.add('nogl')</script>
 <title>Joe Roy Jackson</title>
 <meta name="description" content="Joe Roy Jackson: blues guitarist from Schenectady, New York. New York State Blues Hall of Fame inductee. Booking, music and live shows.">
@@ -99,7 +99,7 @@ header .gt:hover::after,header .gt:focus-visible::after{transform:scaleX(1);tran
 .past{margin:16px 0 0;font-size:13.5px;line-height:1.5;color:var(--text2)}
 .past span{display:block;font:600 11px var(--s);letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
 .bookcta{display:inline-flex;align-items:center;gap:8px;margin-top:18px}
-@media(max-width:760px){.show .cal .cp{padding:4px 8px;letter-spacing:.05em;gap:5px}.show .cal{gap:6px}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.show .cal .cp{padding:4px 8px;letter-spacing:.05em;gap:5px}.show .cal{gap:6px}}
 .show .cal{grid-column:1/-1;margin-top:0;padding-top:12px;border-top:1px solid rgba(var(--ink-rgb),.1)}
 /* add-to-calendar under each upcoming show */
 .list li.up[data-date]{flex-wrap:wrap}.list li.up[data-date]>span{flex:1 1 0;min-width:0}
@@ -130,7 +130,7 @@ header .gt:hover::after,header .gt:focus-visible::after{transform:scaleX(1);tran
 :root[data-theme="light"] .cap.on .say.neon .nw{color:#3a2a14;text-shadow:0 0 14px rgba(255,170,60,.55)}
 :root[data-theme="light"] .cap.on .say.neon i .nw{color:#b3701e}
 .cap:has(.say){z-index:0}   /* the sign sits behind the guitar, so any overlap tucks under it */
-@media(max-width:760px){.cap:has(.say){align-items:flex-start;justify-content:flex-start;padding-top:calc(clamp(86px,13svh,124px) + env(safe-area-inset-top,0px))}   /* phones: the sign hangs in the open space above the headstock */
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.cap:has(.say){align-items:flex-start;justify-content:flex-start;padding-top:calc(clamp(86px,13svh,124px) + env(safe-area-inset-top,0px))}   /* phones: the sign hangs in the open space above the headstock */
  .box.say{max-width:none;width:auto}.box.say p{font-size:clamp(34px,10vw,46px);line-height:1;text-align:left}}   /* the welcome panel by the headstock now says it */
 .cap{position:absolute;z-index:4;inset:0;opacity:0;will-change:transform,opacity;display:flex;align-items:center;padding:0 6vw;pointer-events:none}
 .cap.R{justify-content:flex-end}
@@ -240,7 +240,7 @@ body.gopen{overflow:hidden}
 .links a:hover,.links a:focus-visible{color:var(--acc);transform:translateX(-6px)}
 .links a:hover::after,.links a:focus-visible::after{transform:scaleX(1)}
 .links a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
-@media(max-width:760px){
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){
  .tl{font-size:13px;margin-top:10px}.tl li{grid-template-columns:52px 1fr;gap:10px;padding:5px 0}.tl b{font-size:14px}
  .tracks li{padding:6px 0}
  .gbtn{max-width:none}.gview{padding:4vh 0;gap:0}.gnav{width:36px;font-size:36px}.gview figure{max-width:calc(100vw - 80px)}
@@ -305,7 +305,7 @@ header .gt{padding:9px 18px;border-radius:999px;font-weight:600;font-size:14px}
 .box h2,.box p,.box small,.list,.tl,.contact a{text-shadow:none}
 .box.mus{max-width:460px}.cap.R .box:has(.tl){max-width:470px}.final .box{max-width:400px}
 .list li,.tl li,.trk li,.contact{border-color:rgba(var(--ink-rgb),.12)}
-@media(max-width:760px){
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){
  .box{padding:18px;border-radius:20px;background:linear-gradient(160deg,rgba(20,18,16,.55),rgba(10,9,8,.72))}
  :root[data-theme="light"] .box{background:linear-gradient(160deg,rgba(255,255,255,.72),rgba(255,255,255,.55))}
  .links{gap:8px}.links a{min-width:0;padding:8px 14px;font-size:11.5px}
@@ -361,7 +361,7 @@ html.is-loading,html.is-loading body{overflow:hidden}
 .vc3dots button:hover{background:rgba(var(--ink-rgb),.6)}.vc3dots button.on:hover{background:var(--acc)}
 .vc3dots button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .vc3:focus-visible{outline:2px solid rgba(var(--ink-rgb),.5);outline-offset:4px;border-radius:14px}
-@media(max-width:760px){.vc3{margin-right:18px}.vc3dots{right:-17px}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.vc3{margin-right:18px}.vc3dots{right:-17px}}
 .vdlg{border:0;padding:0;margin:0;width:100%;max-width:none;height:100%;max-height:none;background:rgba(0,0,0,.92);color:var(--ink);overscroll-behavior:contain}
 .vdlg::backdrop{background:rgba(0,0,0,.6)}
 .vdlg[open]{display:grid;place-items:center;animation:gin .35s ease-out}
@@ -373,7 +373,7 @@ html.is-loading,html.is-loading body{overflow:hidden}
 .vfoot a{color:var(--acc);font-weight:600}
 .vfoot a:hover{text-decoration:underline}
 .tl li.up b,.tl li.up em{color:var(--acc);font-style:normal}
-@media(max-width:760px){.vplay{width:52px;height:52px;margin:-26px 0 0 -26px}.vwrap .gx{top:-54px}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.vplay{width:52px;height:52px;margin:-26px 0 0 -26px}.vwrap .gx{top:-54px}}
 .vgo{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font:600 12px var(--s);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
 .vgo svg{width:14px;height:14px;transition:transform .25s}
 .vcard:hover .vgo svg,.vcard:focus-visible .vgo svg{transform:translate(2px,-2px)}
@@ -391,14 +391,14 @@ html.is-loading,html.is-loading body{overflow:hidden}
 .more{all:unset;cursor:pointer;display:none;margin-top:12px;font:600 12px var(--s);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
 .mphoto{margin:0 0 16px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#111}
 .mphoto img{width:100%;height:100%;object-fit:cover;object-position:50% 6%;display:block}
-@media(min-width:761px){.mphoto{aspect-ratio:auto;height:clamp(130px,calc(100vh - 600px),300px)}}
-@media(max-width:760px){.mphoto{aspect-ratio:21/9;margin-bottom:12px;border-radius:10px}.mphoto img{object-position:50% 8%}}
+@media(min-width:761px) and (orientation:landscape),(min-width:1101px){.mphoto{aspect-ratio:auto;height:clamp(130px,calc(100vh - 600px),300px)}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.mphoto{aspect-ratio:21/9;margin-bottom:12px;border-radius:10px}.mphoto img{object-position:50% 8%}}
 .pq{margin:0 0 14px;padding:0}
 .pq p{font:700 21px/1.2 var(--f)!important;letter-spacing:-.015em;color:var(--ink)!important}
 .pq footer{margin-top:6px;font-size:13px;color:var(--mute)}
 .pq footer::before{content:"\2014\00a0"}
 .pq cite{font-style:normal;font-weight:600;color:var(--text2)}
-@media(max-width:760px){
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){
  .tl:not(.open) li:not(.key){display:none}
  .more{display:inline-block}
  .pq p{font-size:18px!important}
@@ -431,7 +431,7 @@ html.nogl .still{display:block;position:absolute;left:50%;top:50%;height:min(88v
 /* scroll hint */
 .hint .hm{display:none}
 @keyframes nudgeY{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-@media(max-width:760px){
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){
  header .mn{display:inline-block;margin-left:auto;padding:7px 14px;border-radius:999px;font:600 13px var(--s);color:var(--ink);background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);cursor:pointer}
  header .mn[aria-expanded="true"]{border-color:var(--acc);color:var(--acc)}
  header{gap:8px}
@@ -448,10 +448,10 @@ html.nogl .still{display:block;position:absolute;left:50%;top:50%;height:min(88v
 /* text scrolling up slips under a soft fade instead of colliding with the top bar */
 .topfade{position:absolute;z-index:3;left:0;right:0;top:0;height:calc(96px + env(safe-area-inset-top,0px));pointer-events:none;background:linear-gradient(var(--bg) 0%,var(--bg) 45%,rgba(var(--bg-rgb),0) 100%)}
 header{z-index:6}
-@media(max-width:760px){.topfade{height:calc(84px + env(safe-area-inset-top,0px))}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.topfade{height:calc(84px + env(safe-area-inset-top,0px))}}
 
 /* phones: the hero sits at the top, under the bar, instead of at the bottom */
-@media(max-width:760px){.hero{top:calc(92px + env(safe-area-inset-top,0px));bottom:auto;right:5vw}.hero h1{font-size:clamp(52px,15.5vw,76px)}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.hero{top:calc(92px + env(safe-area-inset-top,0px));bottom:auto;right:5vw}.hero h1{font-size:clamp(52px,15.5vw,76px)}}
 
 .cap .box,.cap .links,.hero .in{will-change:opacity,transform,filter}
 
@@ -495,7 +495,7 @@ header{z-index:6}
 .lq p{font:600 15.5px/1.4 var(--f)!important;letter-spacing:-.005em;color:var(--ink)!important}
 .lq footer{margin-top:5px;font-size:12.5px;color:var(--mute)}.lq footer::before{content:"\2014\00a0"}.lq cite{font-style:normal;font-weight:600;color:var(--text2)}
 .pkw blockquote+blockquote{margin-top:16px}.pkw blockquote.long{font:500 15.5px/1.55 var(--s)}
-@media(max-width:760px){.lq p{font-size:14px!important}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.lq p{font-size:14px!important}}
 
 /* ===== between the pages: a Vibro-King control panel with its red pilot jewel glowing ===== */
 :root{--amph:calc(100vw*149/1893)}   /* the panel's rendered height */
@@ -528,7 +528,7 @@ header{z-index:6}
 
 .ampw>img.ampm{display:none}
 .ampw .jw,.ampw .ak,.ampw .asw{z-index:1}
-@media(max-width:760px){:root{--amph:calc(243.94vw*149/1893)}.amp{justify-content:flex-end;overflow-x:clip}.ampw{flex:none;width:243.94%}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){:root{--amph:calc(243.94vw*149/1893)}.amp{justify-content:flex-end;overflow-x:clip}.ampw{flex:none;width:243.94%}
  .ampw>img:first-child{visibility:hidden}.ampw>img.ampm{display:block;position:absolute;top:0;left:59.007%;width:40.993%;height:100%}}   /* phones: just the last section (Speed, Intensity, logo, red jewel), with a matching rounded end drawn onto the cut so both ends look the same */
 
 /* ===== page one: the cover (a normal full-screen page above the guitar) ===== */
@@ -555,12 +555,12 @@ header{position:fixed}
 .lnow:hover{background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.07));transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 26px 60px rgba(0,0,0,.5)}
 .lnow:hover .lp{background:linear-gradient(160deg,rgba(255,215,150,.42),rgba(212,160,90,.2));border-color:rgba(255,220,170,.6)}
 .lnow:focus-visible{outline:2px solid #f1ece2;outline-offset:4px}
-@media(max-width:760px){.lnow{bottom:calc(var(--amph)/2 + 72px + env(safe-area-inset-bottom,0px));gap:12px;padding:8px;border-radius:18px}.lnow img{width:48px;height:48px;border-radius:10px}.lnow b{font-size:19px}.lnow em{display:none}.lnow .lp{padding:10px 14px 10px 12px;font-size:11px}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.lnow{bottom:calc(var(--amph)/2 + 72px + env(safe-area-inset-bottom,0px));gap:12px;padding:8px;border-radius:18px}.lnow img{width:48px;height:48px;border-radius:10px}.lnow b{font-size:19px}.lnow em{display:none}.lnow .lp{padding:10px 14px 10px 12px;font-size:11px}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.lnow{background:rgba(18,16,14,.85)}}
 .chint svg{width:16px;height:16px;animation:nudgeY 1.8s ease-in-out infinite}
 .chint:hover{background:rgba(255,255,255,.14)}
 .chint:focus-visible{outline:2px solid #f1ece2;outline-offset:3px}
-@media(max-width:760px){.opening .in{top:calc(92px + env(safe-area-inset-top,0px));right:5vw}.opening h1{font-size:clamp(34px,10vw,46px)}.opening .in{right:auto;max-width:none}.opening .tag,.opening .hc{max-width:54vw}.opening .tag{font-size:15px;line-height:1.4}.opening .hc span{white-space:normal}   /* phones: the intro keeps to the left half, clear of his face */.opening .hc{margin-top:12px}.opening .hc span{font-size:11px}.opening .tag{font-size:17px}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.opening .in{top:calc(92px + env(safe-area-inset-top,0px));right:5vw}.opening h1{font-size:clamp(34px,10vw,46px)}.opening .in{right:auto;max-width:none}.opening .tag,.opening .hc{max-width:54vw}.opening .tag{font-size:15px;line-height:1.4}.opening .hc span{white-space:normal}   /* phones: the intro keeps to the left half, clear of his face */.opening .hc{margin-top:12px}.opening .hc span{font-size:11px}.opening .tag{font-size:17px}
  .cphoto{background-position:39% 50%}   /* slides him right so the name and tagline sit beside him, not over his face */.cphoto::after{background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.2) 45%,rgba(0,0,0,.7) 100%)}}
 @media(prefers-reduced-motion:reduce){.chint svg{animation:none}}
 
@@ -589,8 +589,8 @@ header{position:fixed}
 .mp.playing .mpeq i{animation:eq .9s ease-in-out infinite}.mp.playing .mpeq i:nth-child(2){animation-delay:-.3s}.mp.playing .mpeq i:nth-child(3){animation-delay:-.6s}
 @keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
 .mp .mpx{width:30px;height:30px;color:var(--mute)}.mp .mpx svg{width:13px;height:13px}
-@media(max-width:760px){html.mpon .cap{padding-bottom:calc(6vh + 64px)}html.mpon .final{padding-bottom:calc(6vh + 86px)}.mp .mpx{display:none}}
-@media(min-width:761px){html.mpon .final{padding-bottom:calc(9vh + 62px)}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){html.mpon .cap{padding-bottom:calc(6vh + 64px)}html.mpon .final{padding-bottom:calc(6vh + 86px)}.mp .mpx{display:none}}
+@media(min-width:761px) and (orientation:landscape),(min-width:1101px){html.mpon .final{padding-bottom:calc(9vh + 62px)}}
 @media(prefers-reduced-motion:reduce){.mp.playing .mpeq i{animation:none;transform:scaleY(.7)}}
 
 /* share a song */
@@ -613,8 +613,8 @@ header{position:fixed}
 .ins:hover,.ins:focus-visible{background:var(--g-bg-h);border-color:var(--g-rim-h)}
 .ins:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 html.atend:not(.nogl):not(.inspecting):not(.is-loading) .ins{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .4s,transform .4s,background .2s,border-color .2s}
-@media(max-width:760px){.ins{display:none}}
-@media(min-width:761px){.links .insl{display:none}}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.ins{display:none}}
+@media(min-width:761px) and (orientation:landscape),(min-width:1101px){.links .insl{display:none}}
 html.nogl .links .insl{display:none}
 .insp{position:fixed;inset:0;z-index:30;display:none;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
 .insp.drag{cursor:grabbing}
@@ -659,6 +659,14 @@ html.insp-out .cap,html.insp-out header,html.insp-out .pegs,html.insp-out .topfa
 .bkdone .pk{cursor:pointer}
 .bkdone .fine{margin-top:14px!important;font-size:13px!important;color:var(--mute)!important}
 @media(max-width:520px){.bkf{grid-template-columns:1fr;gap:12px}}
+/* tablets held upright: phone layout, with the panel centred at a readable width */
+@media(min-width:761px) and (max-width:1100px) and (orientation:portrait){
+ .cap,.cap.R{justify-content:center;padding:0 6vw 5vh}
+ .cap .box,.final .box{max-width:600px;width:100%}
+ .final{align-items:center}.final .links{max-width:600px;width:100%}
+ .lnow{max-width:520px}
+ .mp{width:min(520px,calc(100vw - 48px))}
+}
 </style>
 </head>
 <body>
@@ -5036,9 +5044,9 @@ let K,T,tp=0,cp=0,px=0,py=0,spx=0,spy=0;
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches,DEG=Math.PI/180;
 const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),caps=[...document.querySelectorAll('.cap')],glow=$('.glow'),hint=$('#hint');
 function keys(){
- const m=innerWidth<760;
+ const m=NARROW(),tab=m&&innerWidth>760;   // tablets held upright use the phone camera path
  K=RAW.map((r,i)=>{const fin=i>=RAW.length-2, o=r.slice();
-  o[4]*=m?.33:.55;o[5]*=m?.42:.7;if(m){o[3]=fin?22.7:o[3]*1.5;if(fin)o[2]-=1.6;if(r[3]<6.5&&r[0]>.6){o[1]=0;o[2]-=.6;o[3]=r[3]*1.8}}return o});
+  o[4]*=m?.33:.55;o[5]*=m?.42:.7;if(m){o[3]=fin?22.7:o[3]*1.5;if(fin)o[2]-=1.6;if(tab&&!fin&&r[0]>=.3)o[2]-=1.1;if(r[3]<6.5&&r[0]>.6){o[1]=0;o[2]-=.6;o[3]=r[3]*1.8}}return o});
  T=[];for(let c=1;c<=5;c++){const n=K.length,dl=[],mm=[];
   for(let i=0;i<n-1;i++)dl[i]=(K[i+1][c]-K[i][c])/(K[i+1][0]-K[i][0]);
   mm[0]=dl[0];mm[n-1]=dl[n-2];
@@ -5084,7 +5092,7 @@ function planShifts(W){planW=W;if(!GP)guitarPts();const H=cv.clientHeight||inner
   o.shift=Math.min(o.shift,W*.2)*sd});
  pose(cp,spx,spy);if(hadView)cam.setViewOffset(W,H,vOff,0,W,H);scene.updateMatrixWorld()}
 // the guitar sits clear of the open panel for that panel's whole stretch, sliding over as the panel slides in and back as it leaves
-function viewTarget2(W){if(W<=760||!pv)return 0;if(planW!==W||CAPS.some(o=>o.box&&o.box._w!==o._pw)){CAPS.forEach(o=>o._pw=o.box&&o.box._w);planShifts(W)}
+function viewTarget2(W){if(NARROW()||!pv)return 0;if(planW!==W||CAPS.some(o=>o.box&&o.box._w!==o._pw)){CAPS.forEach(o=>o._pw=o.box&&o.box._w);planShifts(W)}
  // one continuous drift: hold each panel's offset while it is fully in view, ease from one to the next across the whole gap between them
  const L=CAPS.filter(o=>o.box).slice().sort((a,b)=>a.t0-b.t0),p=window.NAV?cp:cp;if(!L.length)return 0;
  const full=o=>[o.t0+EDGE,Math.min(o.t1,1.2)-EDGE];
@@ -5257,7 +5265,7 @@ addEventListener('jrj-volume',e=>{au.volume=Math.max(0,Math.min(1,e.detail))});
 au.addEventListener('error',()=>{if(i>=0){rows[i].disabled=true;TRACKS[i].src=null;i=-1;ui()}});
 // ---- mini player: once a song has started it follows the visitor down the page (tucked away while the music panel itself is open) ----
 const mp=$('#mp'),mpp=$('#mppp'),mpn=$('#mpname'),mpf=$('#mpfill'),musCap=pl.closest('.cap'),HTML=document.documentElement;let started=false,mpOff=false;
-function mpShow(){const vis=started&&i>=0&&!mpOff&&!(musCap&&musCap.classList.contains('on'))&&!HTML.classList.contains('inspecting')&&!(HTML.classList.contains('atend')&&innerWidth<=760);   // on phones the booking panel needs the whole screen
+function mpShow(){const vis=started&&i>=0&&!mpOff&&!(musCap&&musCap.classList.contains('on'))&&!HTML.classList.contains('inspecting')&&!(HTML.classList.contains('atend')&&NARROW());   // on phones the booking panel needs the whole screen
  mp.classList.toggle('show',vis);HTML.classList.toggle('mpon',vis);mp.inert=!vis}
 function mpUI(on){if(i<0)return;mpp.innerHTML=on?PAUSE:PLAY;mpp.setAttribute('aria-label',(on?'Pause ':'Play ')+TRACKS[i].t);mpn.textContent=TRACKS[i].t;mp.classList.toggle('playing',on);mpShow()}
 au.addEventListener('play',()=>{started=true;mpOff=false;mpUI(true)});au.addEventListener('pause',()=>mpUI(false));
@@ -5448,7 +5456,7 @@ view.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouch
 /* phones: the neon sign hangs in the gap above the headstock, dipping a little behind the tuners when the gap is tight */
 (()=>{const o=CAPS.find(c=>c.c.querySelector('.say'));if(!o)return;const pEl=o.box.querySelector('p'),hdr=document.querySelector('header'),v=new THREE.Vector3();let base=null,bw=0;
  gsap.ticker.add(()=>{const W=innerWidth;
-  if(W>760||!window.HSM||o.last<=0){if(W>760&&o.c.style.paddingTop){o.c.style.paddingTop='';pEl.style.fontSize=''}return}
+  if(!NARROW()||!window.HSM||o.last<=0){if(!NARROW()&&o.c.style.paddingTop){o.c.style.paddingTop='';pEl.style.fontSize=''}return}
   if(bw!==W){pEl.style.fontSize='';base={h:pEl.offsetHeight,f:parseFloat(getComputedStyle(pEl).fontSize)};bw=W}
   const g=HSM.geometry;if(!g.boundingBox)g.computeBoundingBox();const b=g.boundingBox,r=cv.getBoundingClientRect();let top=1e9;
   for(let i=0;i<8;i++){v.set(i&1?b.max.x:b.min.x,i&2?b.max.y:b.min.y,i&4?b.max.z:b.min.z).applyMatrix4(HSM.matrixWorld).project(cam);if(v.z<1)top=Math.min(top,r.top+(1-v.y)/2*r.height)}
@@ -5669,7 +5677,7 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
 /* desktop: each panel grows into the room beside the guitar, never past its widest point or taller than the screen */
 (()=>{const boxes=[...document.querySelectorAll('.cap .box')];
  function fit(){const W=innerWidth,H=innerHeight;boxes.forEach(b=>b.style.zoom='');
-  if(W<=760){const hb=(document.querySelector('header')?.getBoundingClientRect().bottom||84)+10,avail=H-hb-H*.06;   // phones: tall panels shrink to fit between the header and the bottom
+  if(NARROW()){const hb=(document.querySelector('header')?.getBoundingClientRect().bottom||84)+10,avail=H-hb-H*.06;   // phones: tall panels shrink to fit between the header and the bottom
    boxes.forEach(b=>{const l=b.parentElement.querySelector('.links'),z=Math.max(.6,Math.min(1,(avail-(l?l.offsetHeight+14:0))/b.offsetHeight));if(z<.995)b.style.zoom=z.toFixed(3)});try{vKey=''}catch(e){}return}
   const room=W*.44-H*.25-40;
   boxes.forEach(b=>{const z=Math.max(.72,Math.min(Math.max(room/b.offsetWidth,1),(H-176)/b.offsetHeight,1.35));if(Math.abs(z-1)>.02)b.style.zoom=z.toFixed(3)})
