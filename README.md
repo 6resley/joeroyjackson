@@ -13,7 +13,8 @@ The website for blues guitarist Joe Roy Jackson: a scroll-driven 3D Stratocaster
 | `guitar-still.webp` | Still image shown on devices that can't run 3D |
 | `amp-panel*.webp` | The Vibro-King panel between the cover and the guitar |
 | `share.jpg` | Link-preview image (texts, Facebook, Instagram, X) |
-| `apple-touch-icon.png` | Home-screen icon |
+| `favicon.ico`, `favicon.svg` | Browser-tab and search-result icon (the gold JRJ pick) |
+| `apple-touch-icon.png`, `icon-*.png`, `site.webmanifest` | Home-screen icons for iPhone and Android |
 | `404.html` | Friendly "page not found" page that sends visitors back home |
 | `robots.txt`, `sitemap.xml` | Help search engines find and index the site |
 | `CNAME` | Tells GitHub Pages the site lives at joeroyjackson.com |
