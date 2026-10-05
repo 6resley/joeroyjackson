@@ -422,7 +422,7 @@ html.nogl .still{display:block;position:absolute;left:50%;top:50%;height:min(88v
 .nudge:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
 /* phone menu */
 .mn{display:none}
-.mnp{position:fixed;z-index:20;right:5vw;top:calc(64px + env(safe-area-inset-top,0px));width:min(290px,90vw);padding:8px;border-radius:20px;background:var(--g-bg);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),0 24px 60px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);display:grid;gap:2px;animation:gin .25s ease-out}
+.mnp{position:fixed;z-index:60;right:5vw;top:calc(64px + env(safe-area-inset-top,0px));width:min(290px,90vw);max-height:calc(100svh - 84px - env(safe-area-inset-top,0px));overflow-y:auto;overscroll-behavior:contain;padding:8px;border-radius:20px;background:rgba(var(--bg-rgb),.93);border:1px solid var(--g-rim);box-shadow:inset 0 1px 0 var(--g-hi),0 24px 60px rgba(0,0,0,.55),0 0 0 100vmax rgba(0,0,0,.5);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);display:grid;gap:2px;animation:gin .25s ease-out}
 .mnp[hidden]{display:none}
 .mnp button{all:unset;cursor:pointer;padding:11px 14px;border-radius:12px;font:600 15px var(--f);color:var(--ink)}
 .mnp button:hover,.mnp button:focus-visible{background:var(--g-bg-h)}
@@ -5603,7 +5603,8 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
 <script>
 /* phone menu; keyboard focus scrolls hidden sections into view */
 (()=>{
- const b=document.getElementById('mn'),m=document.getElementById('mnp');
+ const b=document.getElementById('mn'),m=document.getElementById('mnp');document.body.appendChild(m);   // top layer: nothing on the page can cover the open menu
+ b.style.position='relative';b.style.zIndex='61'
  const set=o=>{m.hidden=!o;b.setAttribute('aria-expanded',o);if(o)m.querySelector('button').focus()};window.__menu=set;
  b.addEventListener('click',()=>set(m.hidden));
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!m.hidden){set(false);b.focus()}});
