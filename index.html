@@ -180,6 +180,17 @@ body{-webkit-font-smoothing:antialiased}
 .pp svg,.tb svg{width:16px;height:16px;fill:currentColor;flex:none}
 .trk{list-style:none;padding:0;margin:16px 0 0;counter-reset:t}
 .trk li[hidden]{display:none!important}
+#pp[hidden]{display:none!important}
+.albcar{margin-top:10px}
+.acard{box-sizing:border-box;padding:14px 14px 8px;border-radius:18px;background:linear-gradient(160deg,rgba(var(--bg-rgb),.82),rgba(var(--bg-rgb),.94));border:1px solid rgba(var(--ink-rgb),.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 40px rgba(0,0,0,.35)}
+.acard .rl{gap:16px}
+.acard .meta small{display:block;font:600 10.5px var(--s);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:4px}
+.acard .meta b{font-size:20px;line-height:1.08}
+.acard .meta>span{margin-top:3px}
+.acard .trk{margin-top:12px}
+.acard.playing{border-color:rgba(217,168,106,.45)}
+.vc3.albcar{-webkit-mask-image:linear-gradient(transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(transparent,#000 9%,#000 91%,transparent)}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.acard{padding:12px 12px 6px}.acard .meta b{font-size:17px}}
 /* album tabs: a swipeable row of covers */
 .albs{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;margin:0 -2px 16px;padding:2px}
 .albs::-webkit-scrollbar{display:none}
@@ -785,12 +796,8 @@ html.insp-out .cap,html.insp-out header,html.insp-out .pegs,html.insp-out .topfa
   <small>Listen</small><h2><i>Albums.</i></h2>
   <p class="lede">Blues with a story. Songs with some miles on them.</p>
   <div class="player soon" id="player">
-   <div class="rl">
-    <div class="cover" id="epcover"><img alt="Brothers EP cover art" src="music/brothers-cover.jpg"><span>Brothers</span></div>
-    <div class="meta"><b>Brothers</b><span>EP &middot; 2019 &middot; 5 songs</span>
-     <button class="pp" id="pp" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>Play</span></button></div>
-   </div>
-   <ol class="trk" id="trk"></ol>
+   <button class="pp" id="pp" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>Play</span></button>
+   <div class="albcar" id="albcar" aria-label="Albums" data-peek=".27" data-h="1.24"></div>
    <div class="bar"><span id="cur">0:00</span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek"><span id="dur">&ndash;:&ndash;&ndash;</span></div>
    <p class="note" id="note">Streaming here soon. Until then, listen on:</p>
   </div>
@@ -5271,26 +5278,24 @@ const TRACKS=[
  {a:3,t:'Travelin\u2019',src:'music/bttb-03-travelin.mp3',d:'3:16'},
  {a:3,t:'Treat Me Mean',src:'music/bttb-04-treat-me-mean.mp3',d:'4:50'}];
 const $=q=>document.querySelector(q),PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
-const pl=$('#player'),list=$('#trk'),pp=$('#pp'),seek=$('#seek'),cur=$('#cur'),dur=$('#dur'),au=new Audio();au.preload='none';window.JRJ_AUDIO=au;
+const pl=$('#player'),list=$('#albcar'),pp=$('#pp'),seek=$('#seek'),cur=$('#cur'),dur=$('#dur'),au=new Audio();au.preload='none';window.JRJ_AUDIO=au;
 const live=TRACKS.some(x=>x.src);pl.classList.toggle('soon',!live);pp.disabled=!live;
 const fmt=t=>isFinite(t)?Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0'):'–:––';
 let i=-1;
+const cards=ALBUMS.map((A,n)=>{const c=document.createElement('article');c.className='acard';c.setAttribute('aria-label',A.t);
+ const cnt=TRACKS.filter(x=>x.a===n).length;
+ c.innerHTML='<div class="rl"><div class="cover"><img alt="" loading="lazy"></div><div class="meta"><small></small><b></b><span></span><button class="pp app" type="button">'+PLAY+'<span>Play</span></button></div></div><ol class="trk"></ol>';
+ const im=c.querySelector('.cover img');im.src=A.cover;im.alt=A.t+(A.kind==='EP'?' EP':' album')+' cover art';
+ c.querySelector('small').textContent=A.kind+' \u00b7 '+A.y;c.querySelector('b').textContent=A.t;c.querySelector('.meta>span').textContent=cnt+' songs';
+ c.querySelector('.app').onclick=()=>{shown=n;pp.onclick()};list.appendChild(c);return c});
 TRACKS.forEach((x,k)=>{const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.className='tb';
  b.innerHTML='<span class="ic">'+PLAY+'</span><span></span><em>'+(x.d||String(k+1).padStart(2,'0'))+'</em>';b.children[1].textContent=x.t;
- b.setAttribute('aria-label','Play '+x.t);if(!x.src)b.disabled=true;b.onclick=()=>go(k);li.appendChild(b);list.appendChild(li)});
+ b.setAttribute('aria-label','Play '+x.t);if(!x.src)b.disabled=true;b.onclick=()=>go(k);li.appendChild(b);cards[x.a].querySelector('.trk').appendChild(li)});
 const rows=[...list.querySelectorAll('.tb')];
-// ---- albums: a swipeable row of covers along the top swaps the artwork, details and song list ----
-let shown=0;const tabs=document.createElement('div');tabs.className='albs';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','Albums');
-ALBUMS.forEach((A,n)=>{const b=document.createElement('button');b.type='button';b.className='alb';b.setAttribute('role','tab');
- b.innerHTML='<img alt="" src="'+A.cover+'" loading="lazy"><span><b></b><em></em></span>';b.querySelector('b').textContent=A.t;b.querySelector('em').textContent=A.kind+' \u00b7 '+A.y;
- b.onclick=()=>show(n,true);tabs.appendChild(b)});
-pl.insertBefore(tabs,pl.firstChild);
-const coverIm=$('#epcover img'),metaB=$('#player .meta b'),metaS=$('#player .meta>span');
-function show(n,user){shown=n;const A=ALBUMS[n],cnt=TRACKS.filter(x=>x.a===n).length;
- coverIm.src=A.cover;coverIm.alt=A.t+(A.kind==='EP'?' EP':' album')+' cover art';coverIm.hidden=false;metaB.textContent=A.t;metaS.textContent=A.kind+' \u00b7 '+A.y+' \u00b7 '+cnt+' songs';
- rows.forEach((b,k)=>{b.parentNode.hidden=TRACKS[k].a!==n});
- [...tabs.children].forEach((b,k)=>{b.classList.toggle('on',k===n);b.setAttribute('aria-selected',k===n)});
- if(user)tabs.children[n].scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});ui()}
+// ---- albums: a 3D carousel of album cards (scroll, swipe or use the dots); the card in front is the album on show ----
+let shown=0;
+function show(n){shown=n;if(list.__vc3)list.__vc3.go(n);else list.dataset.start=n;ui()}
+list.addEventListener('vc3change',e=>{shown=e.detail;ui()});
 function go(k){if(!TRACKS[k]||!TRACKS[k].src)return;
  if(k===i){au.paused?au.play():au.pause();return}
  i=k;if(TRACKS[k].a!==shown)show(TRACKS[k].a);au.src=TRACKS[k].src;au.play().catch(()=>{});ui();meta()}
@@ -5306,7 +5311,8 @@ if(MS){const H=(a,f)=>{try{MS.setActionHandler(a,f)}catch(e){}};
  au.addEventListener('timeupdate',()=>{try{if(isFinite(au.duration))MS.setPositionState({duration:au.duration,position:Math.min(au.currentTime,au.duration),playbackRate:au.playbackRate||1})}catch(e){}})}
 function ui(){const on=i>=0&&!au.paused;
  rows.forEach((b,k)=>{const a=k===i&&on;b.classList.toggle('on',k===i);b.querySelector('.ic').innerHTML=a?PAUSE:PLAY;b.setAttribute('aria-label',(a?'Pause ':'Play ')+TRACKS[k].t)});
- pp.innerHTML=(on?PAUSE:PLAY)+'<span>'+(on?'Pause':'Play')+'</span>';}
+ pp.innerHTML=(on?PAUSE:PLAY)+'<span>'+(on?'Pause':'Play')+'</span>';
+ cards.forEach((c,n)=>{const a=on&&TRACKS[i].a===n,b=c.querySelector('.app');b.innerHTML=(a?PAUSE:PLAY)+'<span>'+(a?'Pause':'Play')+'</span>';b.setAttribute('aria-label',(a?'Pause ':'Play ')+ALBUMS[n].t);c.classList.toggle('playing',i>=0&&TRACKS[i].a===n)})}
 pp.onclick=()=>{if(!live)return;i>=0&&TRACKS[i].a===shown?go(i):go(TRACKS.findIndex(x=>x.a===shown&&x.src))};   // plays the album on show
 ['play','pause'].forEach(e=>au.addEventListener(e,ui));
 au.addEventListener('ended',()=>{let n=i+1;while(n<TRACKS.length&&!TRACKS[n].src)n++;n<TRACKS.length&&TRACKS[n].a===TRACKS[i].a?go(n):(au.currentTime=0,ui())});   // plays through to the end of the album
@@ -5350,7 +5356,7 @@ if(wk>=0){i=wk;show(TRACKS[wk].a);au.src=TRACKS[wk].src;au.preload='metadata';ui
  const land=()=>setTimeout(()=>{if(typeof travel==='function'&&typeof ST!=='undefined'&&ST)travel(65);else if(musCap)musCap.scrollIntoView({behavior:'smooth'})},700);
  if(window.__pl&&document.getElementById('pl')){const o=__pl.onExit;__pl.onExit=()=>{o&&o();land()}}else land()}
 
-show(i>=0?TRACKS[i].a:0);   // a shared song link opens on its own album
+show(i>=0?TRACKS[i].a:0);   // a shared song link opens on its own album (the carousel picks this up when it starts)
 window.JRJ_PLAYER={live,toggle:()=>pp.onclick(),step};
 })();
 </script>
@@ -5790,22 +5796,22 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
 <script>
 /* 3D vertical carousel for the videos and the gig dates (only when there's more than one) */
 (()=>{const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
-function vc3(list){const items=[...list.children];const n=items.length;if(n<2)return;
+function vc3(list){const items=[...list.children];const n=items.length;if(n<2)return;const PEEK=+list.dataset.peek||.44,HF=+list.dataset.h||1.3;
  const wrap=document.createElement('div');wrap.className='vc3wrap';list.parentNode.insertBefore(wrap,list);wrap.appendChild(list);list.classList.add('vc3');list.tabIndex=0;
  list.setAttribute('role','region');list.setAttribute('aria-roledescription','carousel');
  const dots=document.createElement('div');dots.className='vc3dots';wrap.appendChild(dots);
  items.forEach((el,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+(i+1)+' of '+n);b.onclick=()=>go(i);dots.appendChild(b);
   el.addEventListener('click',e=>{if(i!==k){e.preventDefault();e.stopImmediatePropagation();go(i)}},true)});   // tapping a card behind brings it forward
  const db=[...dots.children];let k=0,H=0;const st={p:0};
- const size=()=>{H=Math.max(...items.map(el=>el.offsetHeight));list.style.height=Math.round(H*1.3)+'px';lay()};
+ const size=()=>{H=Math.max(...items.map(el=>el.offsetHeight));list.style.height=Math.round(H*HF)+'px';lay()};
  function lay(){items.forEach((el,i)=>{const d=i-st.p,a=Math.abs(d);
    el.querySelectorAll('a,button').forEach(c=>c.tabIndex=i===k?0:-1);if(el.matches('a,button'))el.tabIndex=i===k?0:-1;el.setAttribute('aria-hidden',i!==k);
    if(a>1.9){el.style.visibility='hidden';return}el.style.visibility='';
-   el.style.transform='translate3d(0,'+(d*H*.44-el.offsetHeight/2).toFixed(1)+'px,'+(-a*190).toFixed(1)+'px) rotateX('+(-d*34).toFixed(2)+'deg)';
+   el.style.transform='translate3d(0,'+(d*H*PEEK-el.offsetHeight/2).toFixed(1)+'px,'+(-a*190).toFixed(1)+'px) rotateX('+(-d*34).toFixed(2)+'deg)';
    el.style.opacity=Math.max(0,1-a*.42).toFixed(3);el.style.filter=a<.01?'':'blur('+(a*4.5).toFixed(2)+'px)';el.style.zIndex=String(50-Math.round(a*10));
    el.style.pointerEvents=a<1.2?'':'none'});
   db.forEach((b,i)=>{b.classList.toggle('on',i===k);b.setAttribute('aria-current',i===k)})}
- let tw=null;function go(i){i=Math.max(0,Math.min(n-1,i));if(i===k&&tw)return;k=i;tw&&tw.kill();
+ let tw=null;function go(i){i=Math.max(0,Math.min(n-1,i));if(i===k&&tw)return;const ch=i!==k;k=i;tw&&tw.kill();if(ch)list.dispatchEvent(new CustomEvent('vc3change',{detail:k}));
   if(RM||!window.gsap){st.p=k;lay();return}tw=gsap.to(st,{p:k,duration:.75,ease:'power3.out',onUpdate:lay,onComplete:()=>{tw=null}});lay()}
  // scroll while hovering: one card per flick; at either end the page scrolls on as normal
  let acc=0,lock=0;list.addEventListener('wheel',e=>{const dir=Math.sign(e.deltaY);if(!dir||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
@@ -5817,8 +5823,9 @@ function vc3(list){const items=[...list.children];const n=items.length;if(n<2)re
   e.preventDefault();if(!done&&Math.abs(dy)>30){done=true;go(k+dir)}},{passive:false});
  list.addEventListener('touchend',()=>{ty=null});
  list.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();go(k+1)}else if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();go(k-1)}});
- addEventListener('resize',size);if(document.fonts)document.fonts.ready.then(size);size()}
-['#vlist','.box.live .shows'].forEach(q=>{const el=document.querySelector(q);if(el)vc3(el)});
+ addEventListener('resize',size);if(document.fonts)document.fonts.ready.then(size);
+ const s0=+list.dataset.start||0;if(s0){k=s0;st.p=s0;list.dispatchEvent(new CustomEvent('vc3change',{detail:k}))}size();list.__vc3={go}}
+['#albcar','#vlist','.box.live .shows'].forEach(q=>{const el=document.querySelector(q);if(el)vc3(el)});
 const lh=document.querySelector('.box.live .lh'),sh=document.querySelectorAll('.box.live .shows>li');if(lh&&sh.length>1)lh.textContent='Upcoming shows';
 })();
 </script>
