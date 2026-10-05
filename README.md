@@ -14,6 +14,9 @@ The website for blues guitarist Joe Roy Jackson: a scroll-driven 3D Stratocaster
 | `amp-panel*.webp` | The Vibro-King panel between the cover and the guitar |
 | `share.jpg` | Link-preview image (texts, Facebook, Instagram, X) |
 | `apple-touch-icon.png` | Home-screen icon |
+| `404.html` | Friendly "page not found" page that sends visitors back home |
+| `robots.txt`, `sitemap.xml` | Help search engines find and index the site |
+| `CNAME` | Tells GitHub Pages the site lives at joeroyjackson.com |
 
 The page needs to be served over http(s); opening `index.html` straight from disk won't load the 3D model.
 
