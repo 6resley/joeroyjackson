@@ -10,7 +10,6 @@ The website for blues guitarist Joe Roy Jackson: a scroll-driven 3D Stratocaster
 | `assets/guitar.glb` | The 3D guitar model, loaded by the page |
 | `music/` | The five *Brothers* tracks and the EP cover |
 | `photos/` | Cover photo and the gallery |
-| `videos/` | Video thumbnails |
 | `guitar-still.webp` | Still image shown on devices that can't run 3D |
 | `amp-panel*.webp` | The Vibro-King panel between the cover and the guitar |
 | `share.jpg` | Link-preview image (texts, Facebook, Instagram, X) |
