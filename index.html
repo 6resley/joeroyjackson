@@ -7,19 +7,19 @@
 <title>Joe Roy Jackson</title>
 <meta name="description" content="Joe Roy Jackson: blues guitarist from Schenectady, New York. New York State Blues Hall of Fame inductee. Booking, music and live shows.">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MusicGroup", "@id": "#joe", "name": "Joe Roy Jackson", "genre": ["Blues"], "foundingLocation": {"@type": "Place", "name": "Schenectady, New York"}, "description": "Blues guitarist from Schenectady, New York. New York State Blues Hall of Fame inductee (2013).", "email": "Deovolenteblues@aol.com", "telephone": "+1-518-779-4733", "sameAs": ["https://www.facebook.com/joeroyjackson/", "https://www.instagram.com/joeroyjackson/", "https://x.com/JoeRoy_Jackson", "https://www.youtube.com/@JoeRoyJackson", "https://music.apple.com/us/artist/joe-roy-jackson/1453640996"], "award": ["New York State Blues Hall of Fame (2013)", "Favorite Blues Artist, Listen Up Awards (2026)"]}, {"@type": "MusicAlbum", "name": "Brothers", "byArtist": {"@id": "#joe"}, "datePublished": "2019", "albumReleaseType": "https://schema.org/EPRelease", "numTracks": 5, "track": [{"@type": "MusicRecording", "name": "Brothers", "duration": "PT4M39S"}, {"@type": "MusicRecording", "name": "Life Is Cheap", "duration": "PT3M10S"}, {"@type": "MusicRecording", "name": "Tables Have Turned", "duration": "PT3M46S"}, {"@type": "MusicRecording", "name": "Step Out of Your Body", "duration": "PT3M34S"}, {"@type": "MusicRecording", "name": "Back to the Blues", "duration": "PT4M58S"}]}, {"@type": "MusicEvent", "name": "Abaco Jazz & Blues Festival Kickoff Gala Brunch", "startDate": "2027-01-05T12:00:00-05:00", "endDate": "2027-01-05T17:00:00-05:00", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Abaco Beach Resort & Boat Harbour Marina", "address": {"@type": "PostalAddress", "addressLocality": "Marsh Harbour", "addressRegion": "Abaco", "addressCountry": "BS"}}, "performer": {"@id": "#joe"}, "organizer": {"@type": "Organization", "name": "Abaco Jazz & Blues Festival", "url": "https://www.abacojazzbluesfest.com"}}]}</script>
-<!-- link previews (texts, Facebook, Instagram, X): change SITE_URL below to the real address once the domain is live -->
+<!-- link previews (texts, Facebook, Instagram, X) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Joe Roy Jackson">
 <meta property="og:title" content="Joe Roy Jackson | Blues Guitarist">
 <meta property="og:description" content="New York State Blues Hall of Fame inductee from Schenectady, NY. Hear the Brothers EP, catch him live, book a show.">
-<meta property="og:image" content="https://SITE_URL/share.jpg">
+<meta property="og:image" content="https://joeroyjackson.com/share.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Joe Roy Jackson playing guitar on stage, with his name in white neon">
-<meta property="og:url" content="https://SITE_URL/">
+<meta property="og:url" content="https://joeroyjackson.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Joe Roy Jackson | Blues Guitarist">
 <meta name="twitter:description" content="New York State Blues Hall of Fame inductee from Schenectady, NY. Hear the Brothers EP, catch him live, book a show.">
-<meta name="twitter:image" content="https://SITE_URL/share.jpg">
+<meta name="twitter:image" content="https://joeroyjackson.com/share.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='#f3d28e'/%3E%3Cstop offset='.55' stop-color='#d4a05a'/%3E%3Cstop offset='1' stop-color='#9a6526'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 61C24 55 6 34 5 20 4 9 16 3 32 3s28 6 27 17C58 34 40 55 32 61Z' fill='url%28#g%29' stroke='#5a3a12' stroke-width='1.5'/%3E%3Cpath d='M14 13c5-4 11-5 18-5' stroke='#fff' stroke-opacity='.55' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Ctext x='32' y='36' text-anchor='middle' font-family='Inter Tight,Inter,Helvetica Neue,Arial,sans-serif' font-weight='800' font-size='19' letter-spacing='-1' fill='#1a120a'%3EJRJ%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -5551,11 +5551,11 @@ const VIDEOS=[
 ];
 const $=q=>document.querySelector(q),list=$('#vlist'),dlg=$('#vdlg'),frame=$('#vframe');let last=null;
 const PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
-VIDEOS.forEach(v=>{const b=document.createElement('a');b.className='vcard';b.href='https://www.youtube.com/watch?v='+v.id+(v.start?'&t='+v.start+'s':'');b.target='_blank';b.rel='noopener';b.setAttribute('aria-label','Watch on YouTube: '+v.title);
- b.innerHTML='<div class="vthumb"><img alt="" loading="lazy"><span class="vplay">'+PLAY+'</span></div><div class="vmeta"><b></b><em></em></div><span class="vgo">Watch on YouTube <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+VIDEOS.forEach(v=>{const b=document.createElement('a');b.className='vcard';b.href='https://www.youtube.com/watch?v='+v.id+(v.start?'&t='+v.start+'s':'');b.target='_blank';b.rel='noopener';b.setAttribute('aria-label','Play video: '+v.title);
+ b.innerHTML='<div class="vthumb"><img alt="" loading="lazy"><span class="vplay">'+PLAY+'</span></div><div class="vmeta"><b></b><em></em></div><span class="vgo">Watch now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
  const im=b.querySelector('img');im.src=v.thumb||('https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg');im.onerror=()=>im.remove();   // if the thumbnail can't load, the card keeps its warm gradient
  b.querySelector('b').textContent=v.title;b.querySelector('em').textContent=v.kind||'';
- b.addEventListener('click',()=>{const au=window.JRJ_AUDIO;if(au&&!au.paused)au.pause()});list.appendChild(b)});   // opens YouTube (app on phones); pause the EP first
+ b.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();open(v)});list.appendChild(b)});   // plays in the page; the link still works for opening in a new tab
 // more than one video: swipe or use the arrows; the panel keeps its size
 if(VIDEOS.length>1){list.classList.add('vtrack');list.setAttribute('role','region');list.setAttribute('aria-label','Videos');list.tabIndex=0;
  const AR=d=>'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+(d<0?'M15 6l-6 6 6 6':'M9 6l6 6-6 6')+'" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -5569,7 +5569,7 @@ if(VIDEOS.length>1){list.classList.add('vtrack');list.setAttribute('role','regio
  let t=0;list.addEventListener('scroll',()=>{cancelAnimationFrame(t);t=requestAnimationFrame(upd);clearTimeout(te);te=setTimeout(()=>{tgt=null},160)},{passive:true});addEventListener('resize',upd);upd()}
 function open(v){last=document.activeElement;const au=window.JRJ_AUDIO;if(au&&!au.paused)au.pause();      // don't play two things at once
  frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'?'+(v.start?'start='+v.start+'&':'')+'autoplay=1&rel=0&modestbranding=1&playsinline=1" title="'+v.title.replace(/"/g,'&quot;')+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
- $('#vtitle').textContent=v.title;$('#vyt').href='https://www.youtube.com/watch?v='+v.id;
+ $('#vtitle').textContent=v.title;$('#vyt').href='https://www.youtube.com/watch?v='+v.id+(v.start?'&t='+v.start+'s':'');
  dlg.showModal();document.body.classList.add('gopen');$('#vclose').focus()}
 $('#vclose').onclick=()=>dlg.close();
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
