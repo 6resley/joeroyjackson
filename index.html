@@ -718,8 +718,8 @@ header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus
 :root[data-theme="light"] .box:not(.say),:root[data-theme="light"] .lnow{background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,.25)),rgba(250,247,242,.35)!important;box-shadow:var(--lq-sh),0 24px 60px rgba(60,40,20,.12)!important;
  -webkit-backdrop-filter:blur(28px) saturate(140%) brightness(1.04)!important;backdrop-filter:blur(28px) saturate(140%) brightness(1.04)!important}
 .lnow{cursor:pointer}   /* the EP card is itself a link, so it keeps the pointer */
-@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.01)),rgba(14,12,10,.62)!important}
- :root[data-theme="light"] .box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.6),rgba(255,255,255,.3)),rgba(250,247,242,.6)!important}}   /* phones: a little more tint, since the guitar passes right behind the text */
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.01)),rgba(14,12,10,.93)!important}
+ :root[data-theme="light"] .box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.6),rgba(255,255,255,.3)),rgba(250,247,242,.92)!important}}   /* phones: the guitar passes right behind the text, and the frost can't blur through the animated panel, so the tint carries the readability */
 
 /* photo captions: a frosted strip under the photo in the viewer */
 .gview figure{display:flex;flex-direction:column;align-items:center}
@@ -728,7 +728,16 @@ header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus
 .gview .gnum{margin-top:10px;font:600 11px var(--s);letter-spacing:.16em;color:var(--mute)}
 .gview img{max-height:72vh}
 @media(max-width:760px),(max-width:1100px) and (orientation:portrait){.gview #gcap{font-size:14px;padding:10px 14px}.gview img{max-height:66vh}}
+
+/* photo viewer arrows and close buttons: round liquid-glass, to match the other buttons */
+.gnav,.gx{background:transparent!important;border:0!important;border-radius:50%!important;box-shadow:var(--lq-sh)!important;-webkit-backdrop-filter:blur(6px) saturate(160%);backdrop-filter:blur(6px) saturate(160%);transition:transform .3s cubic-bezier(.2,.8,.2,1),color .3s!important}
+.gx::before{display:none}
+.gnav{width:52px;height:52px;font-size:34px;padding-bottom:5px;box-sizing:border-box;flex:none}
+.gnav:hover,.gx:hover{transform:scale(1.05);color:var(--acc)}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.gnav{width:40px;height:40px;font-size:28px;padding-bottom:4px}}
+.box.live .soon{font:500 15px/1.5 var(--s);color:var(--text2);margin-top:14px}
 </style>
+<script data-goatcounter="https://joeroyjackson.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>   <!-- visitor stats (GoatCounter: no cookies, no personal data) -->
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="container-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence"/><feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/><feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="70" xChannelSelector="R" yChannelSelector="B" result="displaced"/><feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur"/><feComposite in="finalBlur" in2="finalBlur" operator="over"/></filter></defs></svg>
@@ -816,7 +825,7 @@ header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus
    <li><b>2019</b><span>Releases <i>Brothers</i>, a five-song blues EP</span></li>
    <li><b>2025</b><span>Strangecreek Music Festival, Harley Rendezvous, Dock Brown&rsquo;s at Saratoga Lake</span></li>
    <li class="key"><b>2026</b><span>Wins Favorite Blues Artist at the Listen Up Awards</span></li>
-   <li class="up key"><b>2027</b><span>Abaco Jazz &amp; Blues Festival Kickoff Gala Brunch, Marsh Harbour, Bahamas &mdash; <em>Jan 5, upcoming</em></span></li>
+   <li class="up key" data-date="2027-01-05"><b>2027</b><span>Abaco Jazz &amp; Blues Festival Kickoff Gala Brunch, Marsh Harbour, Bahamas &mdash; <em data-past="Jan 5">Jan 5, upcoming</em></span></li>
   </ol>
   <button class="more" id="tlmore" type="button" aria-expanded="false">Show all milestones</button></div></section>
  <section class="cap" data-t="43" data-d="12"><div class="box vids">
@@ -848,6 +857,13 @@ header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus
   </ul>
   <p class="past"><span>Recently played</span>Strangecreek Music Festival &middot; Harley Rendezvous &middot; Dock Brown&rsquo;s, Saratoga Lake</p>
   <a class="btn bookcta" href="#book" data-t="112">Book Joe for your event <span aria-hidden="true">&rarr;</span></a></div></section>
+<script>/* shows look after themselves: the day after a show it moves to "Recently played" (and its timeline entry stops saying "upcoming"); with nothing left ahead, the panel says new dates are coming */
+(()=>{const today=new Date();today.setHours(0,0,0,0);const gone=d=>new Date(d+'T00:00:00')<today;
+ const box=document.querySelector('.box.live');if(box){const ul=box.querySelector('.shows'),past=box.querySelector('.past');
+  [...ul.querySelectorAll('li[data-date]')].reverse().forEach(li=>{if(!gone(li.dataset.date))return;const name=(li.querySelector('.si b')||li).textContent.trim();li.remove();
+   if(past){const sp=past.querySelector('span');sp.after(document.createTextNode(name+(past.textContent.length>sp.textContent.length?' \u00b7 ':'')))}});
+  if(!ul.children.length){const lh=box.querySelector('.lh');lh&&(lh.hidden=true);ul.hidden=true;const p=document.createElement('p');p.className='lede soon';p.textContent='New dates are on the way. Join the mailing list to hear first.';ul.after(p)}}
+ document.querySelectorAll('.tl li.up[data-date]').forEach(li=>{if(!gone(li.dataset.date))return;li.classList.remove('up');const em=li.querySelector('em[data-past]');if(em)em.textContent=em.dataset.past})})();</script>
  <section class="cap final" id="book" data-t="103" data-d="20" data-final><div class="box">
   <small>Booking</small><h2>Bring the blues <i>to you.</i></h2>
   <p>Festivals. Venues. Private events. Let&rsquo;s make some noise.</p>
@@ -5358,6 +5374,7 @@ function mpShow(){const vis=started&&i>=0&&!mpOff&&!(musCap&&musCap.classList.co
  mp.classList.toggle('show',vis);HTML.classList.toggle('mpon',vis);mp.inert=!vis}
 function mpUI(on){if(i<0)return;mpp.innerHTML=on?PAUSE:PLAY;mpp.setAttribute('aria-label',(on?'Pause ':'Play ')+TRACKS[i].t);mpn.textContent=TRACKS[i].t;{const sp=$('#mpt>span');if(sp&&sp.lastChild&&sp.lastChild.nodeType===3)sp.lastChild.nodeValue='Joe Roy Jackson \u00b7 '+ALBUMS[TRACKS[i].a].t}mp.classList.toggle('playing',on);mpShow()}
 au.addEventListener('play',()=>{started=true;mpOff=false;mpUI(true)});au.addEventListener('pause',()=>mpUI(false));
+const counted=new Set();au.addEventListener('play',()=>{const x=TRACKS[i];if(!x||counted.has(i)||!window.goatcounter||!goatcounter.count)return;counted.add(i);goatcounter.count({path:'song/'+slug(x.t),title:'Played: '+x.t,event:true})});   // visitor stats: one count per song per visit
 au.addEventListener('timeupdate',()=>{if(au.duration)mpf.style.transform='scaleX('+(au.currentTime/au.duration).toFixed(4)+')'});
 mpp.onclick=()=>go(i);
 $('#mpprev').onclick=()=>{au.currentTime>3?au.currentTime=0:step(-1)};$('#mpnext').onclick=()=>step(1);
