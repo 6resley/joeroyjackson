@@ -37,7 +37,7 @@ The page needs to be served over http(s); opening `index.html` straight from dis
 ## Before launch
 
 - The mailing list sign-up sends emails to Joe's Kit form (`LIST_ENDPOINT` in `index.html`). Kit emails each new subscriber a confirmation link; manage the list at kit.com.
-- Optional: to have booking requests arrive without the visitor's email app, set `BOOK_ENDPOINT` in `index.html` to a form service address (e.g. Formspree). Until then the booking form opens a neatly laid-out, pre-filled email to Joe.
+- Booking requests go to Joe Roy through Formspree (`BOOK_ENDPOINT` in `index.html`, form `xaeqogor`); see and manage them at formspree.io. If a request can't be sent, the form opens the visitor's email app with it written out instead.
 
 ## Handy extras
 

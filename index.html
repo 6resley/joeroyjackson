@@ -906,7 +906,8 @@ header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus
    <label><span>Venue or event name</span><input name="venue" autocomplete="organization"></label>
    <label><span>City and state</span><input name="city" autocomplete="address-level2" placeholder="e.g. Albany, NY"></label>
    <label class="w"><span>Budget <span class="opt">(optional)</span></span><input name="budget" placeholder="A range is fine"></label>
-   <label class="w"><span>Anything else Joe should know</span><textarea name="msg" rows="4" placeholder="Crowd size, indoors or out, sound and backline, load-in time&hellip;"></textarea></label>
+   <input name="_gotcha" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0;pointer-events:none">
+   <label class="w"><span>Anything else Joe Roy should know</span><textarea name="msg" rows="4" placeholder="Crowd size, indoors or out, sound and backline, load-in time&hellip;"></textarea></label>
    <div class="bkgo"><button class="btn" type="submit">Send request</button><span class="bkmsg" id="bkmsg" role="status"></span></div>
   </form>
   <div class="bkdone" id="bkdone" hidden tabindex="-1">
@@ -5737,8 +5738,8 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
 </script>
 <script>
 /* booking request form: lays the gig details out in a tidy email to Joe.
-   To have requests arrive without the visitor's email app, paste a form service address (e.g. Formspree) into BOOK_ENDPOINT. */
-(()=>{const BOOK_ENDPOINT='',TO='Deovolenteblues@aol.com';
+   Requests go straight to Joe Roy through Formspree (BOOK_ENDPOINT); if that ever fails, the visitor's email app opens with the request instead. */
+(()=>{const BOOK_ENDPOINT='https://formspree.io/f/xaeqogor',TO='Deovolenteblues@aol.com';
  const $=id=>document.getElementById(id),d=$('bk'),f=$('bkf'),done=$('bkdone'),msg=$('bkmsg');if(!d||!f)return;
  let last=null,text='',subj='';
  const open=e=>{e&&e.preventDefault();last=document.activeElement;f.hidden=false;done.hidden=true;msg.textContent='';msg.className='bkmsg';
@@ -5751,14 +5752,14 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
  f.addEventListener('input',e=>{e.target.removeAttribute('aria-invalid');if(msg.classList.contains('err'))msg.textContent=''});
  const mail=()=>{const a=document.createElement('a');a.href='mailto:'+TO+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(text);a.click()};
  const show=sent=>{$('bkh').textContent=sent?'Request sent.':'Almost there.';
-  $('bkp').textContent=sent?'Thanks! Joe has your request and will be in touch soon. Here’s a copy for your records.':'Your email app should open with the request written out below. Just press send.';
+  $('bkp').textContent=sent?'Thanks! Joe Roy has your request and will be in touch soon. Here’s a copy for your records.':'Your email app should open with the request written out below. Just press send.';
   $('bkpre').textContent=text;$('bkagain').hidden=sent;$('bkfine').hidden=sent;f.hidden=true;done.hidden=false;done.focus({preventScroll:true})};
  f.addEventListener('submit',async e=>{e.preventDefault();
   const v=n=>(f.elements[n].value||'').trim(),bad=[];
   [...f.elements].forEach(x=>x.removeAttribute('aria-invalid'));
   if(!v('name'))bad.push('name');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email')))bad.push('email');
   if(bad.length){bad.forEach(n=>f.elements[n].setAttribute('aria-invalid','true'));msg.className='bkmsg err';
-   msg.textContent=bad.length>1?'Please add your name and email.':bad[0]==='name'?'Please add your name.':'Please enter a valid email so Joe can reply.';f.elements[bad[0]].focus();return}
+   msg.textContent=bad.length>1?'Please add your name and email.':bad[0]==='name'?'Please add your name.':'Please enter a valid email so Joe Roy can reply.';f.elements[bad[0]].focus();return}
   const type=v('type'),date=nice(v('date')),L=(k,x)=>x?k+' '+x:null;
   subj='Booking request: '+[type||'Gig',date&&('on '+date.replace(/^\w+, /,'')),v('city')&&('in '+v('city'))].filter(Boolean).join(' ');
   text=['BOOKING REQUEST','',
@@ -5766,8 +5767,13 @@ dlg.addEventListener('close',()=>{frame.innerHTML='';document.body.classList.rem
    'CONTACT',L('Name:',v('name')),L('Email:',v('email')),L('Phone:',v('phone')),
    ...(v('msg')?['','DETAILS',v('msg')]:[]),'','Sent from the booking form on joeroyjackson.com'].filter(x=>x!==null).join('\n');
   if(BOOK_ENDPOINT){const btn=f.querySelector('[type=submit]');btn.disabled=true;msg.className='bkmsg';msg.textContent='Sending…';
-   try{const fd=new FormData();fd.append('_subject',subj);fd.append('_replyto',v('email'));fd.append('email',v('email'));fd.append('name',v('name'));fd.append('message',text);
-    const r=await fetch(BOOK_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:fd});if(!r.ok)throw 0;show(true)}
+   try{const fd=new FormData(),add=(k,x)=>{if(x)fd.append(k,x)};   // one field per answer, so each shows as its own column in Formspree
+    add('_subject',subj);add('name',v('name'));add('email',v('email'));add('phone',v('phone'));add('event type',type);add('event date',date);add('venue',v('venue'));
+    add('city',v('city'));add('set length',v('len'));add('budget',v('budget'));add('details',v('msg'));add('message',text);add('_gotcha',v('_gotcha'));   // _gotcha: Formspree's spam trap, only bots fill it in
+    const r=await fetch(BOOK_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:fd});
+    if(!r.ok){let j=null;try{j=await r.json()}catch(_){}const fe=j&&j.errors&&j.errors.find(x=>x.field==='email');
+     if(fe){f.elements.email.setAttribute('aria-invalid','true');msg.className='bkmsg err';msg.textContent='Please check your email address so Joe Roy can reply.';f.elements.email.focus();return}throw 0}
+    show(true)}
    catch(err){msg.className='bkmsg err';msg.textContent='That didn’t go through, so we’ll open your email app instead…';setTimeout(()=>{mail();show(false)},1200)}
    finally{btn.disabled=false}return}
   mail();show(false)});
