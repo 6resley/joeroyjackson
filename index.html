@@ -711,6 +711,15 @@ header .gt:hover,header .mn:hover,.links a:hover,.plat a:hover,.pp:hover,.btn:ho
 header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus-visible,.pk:focus-visible,.cp:hover{background:transparent!important;transform:scale(1.05)}
 .pp,.btn,:root[data-theme="light"] .pp,:root[data-theme="light"] .btn,.pp:hover,.btn:hover,.btn:focus-visible{color:var(--acc)}   /* main actions keep the gold, like the component's primary text */
 .player.soon .pp:hover{transform:none}
+
+/* ---- frosted text panels: the same liquid-glass rim as the buttons, but thicker frost, a soft tint and no hover, so they read as glass cards rather than things to press ---- */
+.box:not(.say),.lnow{background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.015)),rgba(18,16,14,.42)!important;border:0!important;box-shadow:var(--lq-sh),0 24px 60px rgba(0,0,0,.42)!important;
+ -webkit-backdrop-filter:blur(28px) saturate(150%) brightness(.92)!important;backdrop-filter:blur(28px) saturate(150%) brightness(.92)!important;cursor:default}
+:root[data-theme="light"] .box:not(.say),:root[data-theme="light"] .lnow{background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,.25)),rgba(250,247,242,.35)!important;box-shadow:var(--lq-sh),0 24px 60px rgba(60,40,20,.12)!important;
+ -webkit-backdrop-filter:blur(28px) saturate(140%) brightness(1.04)!important;backdrop-filter:blur(28px) saturate(140%) brightness(1.04)!important}
+.lnow{cursor:pointer}   /* the EP card is itself a link, so it keeps the pointer */
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.01)),rgba(14,12,10,.62)!important}
+ :root[data-theme="light"] .box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.6),rgba(255,255,255,.3)),rgba(250,247,242,.6)!important}}   /* phones: a little more tint, since the guitar passes right behind the text */
 </style>
 </head>
 <body>
