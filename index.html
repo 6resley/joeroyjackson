@@ -720,6 +720,14 @@ header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus
 .lnow{cursor:pointer}   /* the EP card is itself a link, so it keeps the pointer */
 @media(max-width:760px),(max-width:1100px) and (orientation:portrait){.box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.01)),rgba(14,12,10,.62)!important}
  :root[data-theme="light"] .box:not(.say){background:linear-gradient(160deg,rgba(255,255,255,.6),rgba(255,255,255,.3)),rgba(250,247,242,.6)!important}}   /* phones: a little more tint, since the guitar passes right behind the text */
+
+/* photo captions: a frosted strip under the photo in the viewer */
+.gview figure{display:flex;flex-direction:column;align-items:center}
+.gview #gcap{margin-top:14px;max-width:min(720px,100%);padding:11px 20px;border-radius:16px;font:500 15px/1.45 var(--s);color:var(--ink);text-align:center;background:rgba(var(--ink-rgb),.06);box-shadow:var(--lq-sh);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%)}
+.gview #gcap[hidden]{display:none}
+.gview .gnum{margin-top:10px;font:600 11px var(--s);letter-spacing:.16em;color:var(--mute)}
+.gview img{max-height:72vh}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.gview #gcap{font-size:14px;padding:10px 14px}.gview img{max-height:66vh}}
 </style>
 </head>
 <body>
@@ -919,7 +927,7 @@ header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus
  <div class="gh"><div><small>Photos</small><h2>In good <i>company.</i></h2></div><button class="gx" id="gclose" type="button" aria-label="Close photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div>
  <div class="ggrid" id="ggrid"></div>
  <p class="gempty" id="gempty">Photos are on the way.</p>
- <div class="gview" id="gview" hidden><button class="gnav" id="gprev" type="button" aria-label="Previous photo">&#8249;</button><figure><img id="gimg" alt=""><figcaption id="gcap"></figcaption></figure><button class="gnav" id="gnext" type="button" aria-label="Next photo">&#8250;</button></div>
+ <div class="gview" id="gview" hidden><button class="gnav" id="gprev" type="button" aria-label="Previous photo">&#8249;</button><figure><img id="gimg" alt=""><figcaption id="gcap" hidden></figcaption><div class="gnum" id="gnum" aria-hidden="true"></div></figure><button class="gnav" id="gnext" type="button" aria-label="Next photo">&#8250;</button></div>
 </dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -5387,46 +5395,47 @@ window.JRJ_PLAYER={live,toggle:()=>pp.onclick(),step};
 /* Photo gallery for the "In good company" section. Add photos here: {src:'...', cap:'...'} */
 (()=>{
 const PHOTOS=[
- {src:'photos/2.jpg',thumb:'38% 40% / 190%'},   // Joe Roy with Eric Johnson outside Austin Guitars: leads the gallery and fronts the photo button
- {src:'photos/13.jpg'},
+ {src:'photos/2.jpg',thumb:'38% 40% / 190%',cap:'With Eric Johnson outside Austin Guitars.'},   // Joe Roy with Eric Johnson outside Austin Guitars: leads the gallery and fronts the photo button
+ {src:'photos/13.jpg',cap:"Jamaica Jazz & Blues Festival, January 24–30, 2010, at Greenfield Stadium, Trelawny. Joe Roy on the bill with Maxi Priest, Joss Stone, Babyface, Gladys Knight and more."},
  {src:'photos/1.jpg'},
  {src:'photos/3.jpg'},
  {src:'photos/4.jpg'},
- {src:'photos/5.jpg'},
+ {src:'photos/5.jpg',cap:"Cohoes Music Hall"},
  {src:'photos/6.jpg'},
- {src:'photos/7.jpg'},
- {src:'photos/8.jpg'},
+ {src:'photos/7.jpg',cap:"Strangecreek Campout, Sunday, May 25, 2025: the Joe Jackson Band on the Riverworm stage, 2:00–3:15 PM."},
+ {src:'photos/8.jpg',cap:"New York State Blues Hall of Fame induction ceremony and concert, August 11, 2013, Saratoga City Tavern, Saratoga Springs, NY."},
  {src:'photos/9.jpg'},
- {src:'photos/10.jpg'},
+ {src:'photos/10.jpg',cap:"Abaco Jazz & Blues Fest Kickoff Gala Brunch, Tuesday, January 5, 2027, Abaco Beach Resort & Boat Harbour Marina, Marsh Harbour, Bahamas."},
  {src:'photos/11.jpg'},
  {src:'photos/12.jpg'},
- {src:'photos/14.jpg'},
- {src:'photos/15.jpg'},
+ {src:'photos/14.jpg',cap:"“Am Jam 1998”"},
+ {src:'photos/15.jpg',cap:"The Daily Observer, Wednesday, January 27, 2010: Page 2 coverage from the Jamaica Jazz & Blues Festival."},
  {src:'photos/16.jpg'},
- {src:'photos/17.jpg'},
- {src:'photos/23.jpg'},
- {src:'photos/18.jpg'},
+ {src:'photos/17.jpg',cap:"NY Rider’s “Rhythm & Rides”: Arlo Guthrie’s Alice’s Restaurant 50th Anniversary at Lake George, with the Blues Hall of Famer Joe Roy Jackson Band."},
+ {src:'photos/23.jpg',cap:"Jamaica Jazz & Blues 2010 program, Greenfield Stadium, Trelawny, Jamaica."},
+ {src:'photos/18.jpg',cap:"Joe Roy’s artist profile in the Jamaica Jazz & Blues Festival program: “The Quintessential Blues Man.”"},
  {src:'photos/19.jpg'},
  {src:'photos/20.jpg'},
  {src:'photos/21.jpg'},
- {src:'photos/22.jpg'},
- {src:'photos/30.jpg'},
- {src:'photos/31.jpg'},
- {src:'photos/24.jpg'},
- {src:'photos/25.jpg'},
- {src:'photos/26.jpg'},
- {src:'photos/27.jpg'},
+ {src:'photos/22.jpg',cap:"Live at Orange County Choppers Cafe."},
+ {src:'photos/30.jpg',cap:"Hot Stuff (1995), album cover."},
+ {src:'photos/31.jpg',cap:"Back to the Blues (1992), album cover."},
+ {src:'photos/24.jpg',cap:"Back to the Blues (1992), cassette cover."},
+ {src:'photos/25.jpg',cap:"Back to the Blues cassette, New Millenium Records, 1992."},
+ {src:'photos/26.jpg',cap:"So You Think It’s Easy Being Me (2012), album cover."},
+ {src:'photos/27.jpg',cap:"So You Think It’s Easy Being Me (2012), back cover and track list."},
  {src:'photos/28.jpg'},
  {src:'photos/29.jpg'},
-];
+ {src:'photos/32.jpg'},
+];   // captions (cap) show under each photo in the full-screen viewer
 const $=q=>document.querySelector(q),dlg=$('#gal'),grid=$('#ggrid'),view=$('#gview'),img=$('#gimg'),cap=$('#gcap');let at=-1,lastFocus=null;
 $('#gcount').textContent=PHOTOS.length?PHOTOS.length+' photo'+(PHOTOS.length>1?'s':''):'Coming soon';
 $('#gempty').hidden=PHOTOS.length>0;
 $('#gstack').innerHTML=[1,0].map(k=>{const p=PHOTOS[k]||PHOTOS[0];return p?'<i style="background:#2a2521 url(\''+p.src+'\') '+(p.thumb||'center / cover')+' no-repeat"></i>':'<i></i>'}).join('');
 PHOTOS.forEach((p,k)=>{const f=document.createElement('figure'),b=document.createElement('button'),im=document.createElement('img');
  b.type='button';const alt=p.cap||'Joe Roy Jackson photo '+(k+1);b.setAttribute('aria-label','View '+alt);im.src=p.src;im.alt=alt;im.loading='lazy';b.appendChild(im);b.onclick=()=>show(k);f.appendChild(b);
- if(p.cap){const c=document.createElement('figcaption');c.textContent=p.cap;f.appendChild(c)}grid.appendChild(f)});
-function show(k){at=(k+PHOTOS.length)%PHOTOS.length;img.src=PHOTOS[at].src;img.alt=PHOTOS[at].cap||'Joe Roy Jackson photo '+(at+1);cap.textContent=PHOTOS[at].cap||'';view.hidden=false;$('#gnext').focus()}
+ grid.appendChild(f)});
+function show(k){at=(k+PHOTOS.length)%PHOTOS.length;img.src=PHOTOS[at].src;img.alt=PHOTOS[at].cap||'Joe Roy Jackson photo '+(at+1);cap.textContent=PHOTOS[at].cap||'';cap.hidden=!PHOTOS[at].cap;$('#gnum').textContent=(at+1)+' / '+PHOTOS.length;view.hidden=false;$('#gnext').focus()}
 function hideView(){view.hidden=true;const b=grid.querySelectorAll('button')[at];b&&b.focus();at=-1}
 $('#gopen').onclick=()=>{lastFocus=document.activeElement;dlg.showModal();document.body.classList.add('gopen');$('#gclose').focus()};
 $('#gclose').onclick=()=>dlg.close();
