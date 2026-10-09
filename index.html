@@ -699,9 +699,22 @@ html.insp-out .cap,html.insp-out header,html.insp-out .pegs,html.insp-out .topfa
  .lnow{max-width:520px}
  .mp{width:min(520px,calc(100vw - 48px))}
 }
+
+/* ---- liquid glass buttons: a plain-CSS port of the LiquidButton component (same shadow stack, SVG distortion and hover grow) ---- */
+:root{--lq-sh:0 0 8px rgba(0,0,0,.03),0 2px 6px rgba(0,0,0,.08),inset 3px 3px .5px -3.5px rgba(255,255,255,.09),inset -3px -3px .5px -3.5px rgba(255,255,255,.85),inset 1px 1px 1px -.5px rgba(255,255,255,.6),inset -1px -1px 1px -.5px rgba(255,255,255,.6),inset 0 0 6px 6px rgba(255,255,255,.12),inset 0 0 2px 2px rgba(255,255,255,.06),0 0 12px rgba(0,0,0,.15)}
+:root[data-theme="light"]{--lq-sh:0 0 6px rgba(0,0,0,.03),0 2px 6px rgba(0,0,0,.08),inset 3px 3px .5px -3px rgba(0,0,0,.9),inset -3px -3px .5px -3px rgba(0,0,0,.85),inset 1px 1px 1px -.5px rgba(0,0,0,.6),inset -1px -1px 1px -.5px rgba(0,0,0,.6),inset 0 0 6px 6px rgba(0,0,0,.12),inset 0 0 2px 2px rgba(0,0,0,.06),0 0 12px rgba(255,255,255,.15)}
+header .gt,header .mn,.links a,.plat a,.pp,.btn,.pk,.cp,.ins,.insbar button,.chint,.lnow .lp{background:transparent!important;border:0!important;border-radius:999px!important;box-shadow:var(--lq-sh)!important;
+ -webkit-backdrop-filter:blur(6px) saturate(160%);backdrop-filter:blur(6px) saturate(160%);transition:transform .3s cubic-bezier(.2,.8,.2,1),color .3s,opacity .4s!important}
+@media(hover:hover) and (pointer:fine){header .gt,header .mn,.links a,.plat a,.pp,.btn,.pk,.cp,.ins,.insbar button,.chint,.lnow .lp{backdrop-filter:url(#container-glass)}}   /* the liquid distortion on desktop; touch screens keep a plain glass blur so scrolling stays smooth */
+header .gt::before,.links a::before,.plat a::before,.pp::before,.btn::before{display:none}
+header .gt:hover,header .mn:hover,.links a:hover,.plat a:hover,.pp:hover,.btn:hover,.pk:hover,.insbar button:hover,.lnow .lp:hover,
+header .gt:focus-visible,.links a:focus-visible,.plat a:focus-visible,.btn:focus-visible,.pk:focus-visible,.cp:hover{background:transparent!important;transform:scale(1.05)}
+.pp,.btn,:root[data-theme="light"] .pp,:root[data-theme="light"] .btn,.pp:hover,.btn:hover,.btn:focus-visible{color:var(--acc)}   /* main actions keep the gold, like the component's primary text */
+.player.soon .pp:hover{transform:none}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="container-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence"/><feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/><feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="70" xChannelSelector="R" yChannelSelector="B" result="displaced"/><feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur"/><feComposite in="finalBlur" in2="finalBlur" operator="over"/></filter></defs></svg>
 <div id="pl" role="status" aria-live="polite" aria-label="Loading">
  <div class="wrap">
   <div class="kick">Joe Roy Jackson</div>
